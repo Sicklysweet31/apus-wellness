@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APUS Wellness — Logo Options</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1C2120;
+    color: #F4EDE3;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 60px 40px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: #C4873A;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .intro {
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8B7355;
+    margin-bottom: 60px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    background: rgba(196,135,58,0.12);
+  }
+
+  .card {
+    background: #12191A;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .card-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8B7355;
+    align-self: flex-start;
+  }
+
+  .logo-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .logo-preview svg {
+    display: block;
+  }
+
+  .size-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(139,115,85,0.5);
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(196,135,58,0.15);
+  }
+
+  .desc {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.82rem;
+    color: rgba(244,237,227,0.55);
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  /* Nav preview */
+  .nav-preview {
+    background: rgba(28,33,32,0.85);
+    backdrop-filter: blur(12px);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid rgba(196,135,58,0.1);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #C4873A;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Logo Options</h1>
+<p class="intro">APUS Wellness — Alege varianta preferată</p>
+
+<div class="grid">
+
+  <!-- OPTION A: Two peaks, arc sun (current refined) -->
+  <div class="card">
+    <span class="card-label">Opțiunea A — Dublu Vârf, Arc Solar</span>
+    <div class="logo-preview">
+      <span class="size-label">Mark (full)</span>
+      <svg width="160" height="90" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="mtnClipA">
+            <rect x="0" y="0" width="160" height="52"/>
+          </clipPath>
+        </defs>
+        <!-- Sun arc clipped at mountain base -->
+        <circle cx="80" cy="44" r="18" stroke="#C4873A" stroke-width="0.8" fill="none" clip-path="url(#mtnClipA)"/>
+        <!-- Left mountain -->
+        <polyline points="4,52 52,6 68,52" stroke="#C4873A" stroke-width="0.9" fill="none" stroke-linejoin="miter"/>
+        <!-- Right mountain -->
+        <polyline points="92,52 108,6 156,52" stroke="#C4873A" stroke-width="0.9" fill="none" stroke-linejoin="miter"/>
+        <!-- Wordmark -->
+        <text x="80" y="70" font-family="'Cormorant Garamond', serif" font-size="16" font-weight="300" letter-spacing="8" fill="#C4873A" text-anchor="middle">APUS</text>
+        <text x="80" y="84" font-family="'Jost', sans-serif" font-size="7" font-weight="300" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+      </svg>
+      <div class="divider"></div>
+      <span class="size-label">Nav</span>
+      <!-- Nav variant: mark + text side by side -->
+      <svg width="160" height="28" viewBox="0 0 200 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="navClipA">
+            <rect x="0" y="0" width="30" height="18"/>
+          </clipPath>
+        </defs>
+        <circle cx="15" cy="15" r="7" stroke="#C4873A" stroke-width="0.7" fill="none" clip-path="url(#navClipA)"/>
+        <polyline points="0,18 12,2 18,18" stroke="#C4873A" stroke-width="0.8" fill="none"/>
+        <polyline points="12,18 18,2 30,18" stroke="#C4873A" stroke-width="0.8" fill="none"/>
+        <line x1="40" y1="4" x2="40" y2="24" stroke="rgba(196,135,58,0.3)" stroke-width="0.6"/>
+        <text x="52" y="17" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="300" letter-spacing="5" fill="#C4873A">APUS</text>
+        <text x="105" y="17" font-family="'Jost', sans-serif" font-size="6.5" font-weight="300" letter-spacing="3.5" fill="rgba(139,115,85,0.8)">WELLNESS</text>
+      </svg>
+    </div>
+    <p class="desc">Două vârfuri simetrice cu soarele strecurându-se între ele. Geometrie curată, echilibrată. Simbolizează frăția și dualitatea brand-ului (tată și fiu).</p>
+  </div>
+
+  <!-- OPTION B: Three peaks, sun between center gap -->
+  <div class="card">
+    <span class="card-label">Opțiunea B — Trei Vârfuri, Soare Central</span>
+    <div class="logo-preview">
+      <span class="size-label">Mark (full)</span>
+      <svg width="160" height="90" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="mtnClipB">
+            <rect x="0" y="0" width="160" height="52"/>
+          </clipPath>
+        </defs>
+        <!-- Sun clipped at mountain base -->
+        <circle cx="80" cy="46" r="14" stroke="#C4873A" stroke-width="0.8" fill="none" clip-path="url(#mtnClipB)"/>
+        <!-- Left outer mountain -->
+        <polyline points="0,52 30,14 52,52" stroke="#C4873A" stroke-width="0.8" fill="none" stroke-linejoin="miter"/>
+        <!-- Center mountain (tallest) -->
+        <polyline points="56,52 80,4 104,52" stroke="#C4873A" stroke-width="0.8" fill="none" stroke-linejoin="miter"/>
+        <!-- Right outer mountain -->
+        <polyline points="108,52 130,14 160,52" stroke="#C4873A" stroke-width="0.8" fill="none" stroke-linejoin="miter"/>
+        <!-- Wordmark -->
+        <text x="80" y="70" font-family="'Cormorant Garamond', serif" font-size="16" font-weight="300" letter-spacing="8" fill="#C4873A" text-anchor="middle">APUS</text>
+        <text x="80" y="84" font-family="'Jost', sans-serif" font-size="7" font-weight="300" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+      </svg>
+      <div class="divider"></div>
+      <span class="size-label">Nav</span>
+      <svg width="160" height="28" viewBox="0 0 200 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="navClipB">
+            <rect x="0" y="0" width="32" height="18"/>
+          </clipPath>
+        </defs>
+        <circle cx="16" cy="15" r="6" stroke="#C4873A" stroke-width="0.7" fill="none" clip-path="url(#navClipB)"/>
+        <polyline points="0,18 10,6 16,18" stroke="#C4873A" stroke-width="0.75" fill="none"/>
+        <polyline points="10,18 16,3 22,18" stroke="#C4873A" stroke-width="0.75" fill="none"/>
+        <polyline points="16,18 22,6 32,18" stroke="#C4873A" stroke-width="0.75" fill="none"/>
+        <line x1="42" y1="4" x2="42" y2="24" stroke="rgba(196,135,58,0.3)" stroke-width="0.6"/>
+        <text x="54" y="17" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="300" letter-spacing="5" fill="#C4873A">APUS</text>
+        <text x="107" y="17" font-family="'Jost', sans-serif" font-size="6.5" font-weight="300" letter-spacing="3.5" fill="rgba(139,115,85,0.8)">WELLNESS</text>
+      </svg>
+    </div>
+    <p class="desc">Trei vârfuri evocă Munții Apuseni ca lanț — soarele se ascunde în spatele vârfului central. Mai complex, mai epic. Transmite profunzime și tradiție montană.</p>
+  </div>
+
+  <!-- OPTION C: Single peak, large sun half-hidden -->
+  <div class="card">
+    <span class="card-label">Opțiunea C — Vârf Unic, Soare Parțial</span>
+    <div class="logo-preview">
+      <span class="size-label">Mark (full)</span>
+      <svg width="160" height="90" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="mtnClipC">
+            <!-- Clip below mountain silhouette: approximate triangle mask -->
+            <polygon points="0,90 0,54 80,6 160,54 160,90"/>
+          </clipPath>
+          <clipPath id="sunClipC">
+            <rect x="0" y="0" width="160" height="54"/>
+          </clipPath>
+        </defs>
+        <!-- Large sun clipped at horizon -->
+        <circle cx="80" cy="54" r="24" stroke="#C4873A" stroke-width="0.9" fill="none" clip-path="url(#sunClipC)"/>
+        <!-- Mountain drawn on top -->
+        <polyline points="8,54 80,6 152,54" stroke="#C4873A" stroke-width="1" fill="none" stroke-linejoin="miter"/>
+        <!-- Horizon line -->
+        <line x1="0" y1="54" x2="160" y2="54" stroke="rgba(196,135,58,0.25)" stroke-width="0.6"/>
+        <!-- Wordmark -->
+        <text x="80" y="72" font-family="'Cormorant Garamond', serif" font-size="16" font-weight="300" letter-spacing="8" fill="#C4873A" text-anchor="middle">APUS</text>
+        <text x="80" y="86" font-family="'Jost', sans-serif" font-size="7" font-weight="300" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+      </svg>
+      <div class="divider"></div>
+      <span class="size-label">Nav</span>
+      <svg width="160" height="28" viewBox="0 0 200 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="navClipC">
+            <rect x="0" y="0" width="30" height="18"/>
+          </clipPath>
+        </defs>
+        <circle cx="15" cy="18" r="10" stroke="#C4873A" stroke-width="0.7" fill="none" clip-path="url(#navClipC)"/>
+        <polyline points="2,18 15,3 28,18" stroke="#C4873A" stroke-width="0.85" fill="none"/>
+        <line x1="40" y1="4" x2="40" y2="24" stroke="rgba(196,135,58,0.3)" stroke-width="0.6"/>
+        <text x="52" y="17" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="300" letter-spacing="5" fill="#C4873A">APUS</text>
+        <text x="105" y="17" font-family="'Jost', sans-serif" font-size="6.5" font-weight="300" letter-spacing="3.5" fill="rgba(139,115,85,0.8)">WELLNESS</text>
+      </svg>
+    </div>
+    <p class="desc">Un vârf central bold, soarele mare pe jumătate ascuns după el. Dramatic, cinematic. Maximizează impactul vizual — logomark imediat recognoscibil la orice dimensiune.</p>
+  </div>
+
+  <!-- OPTION D: Circle badge / seal -->
+  <div class="card">
+    <span class="card-label">Opțiunea D — Sigiliu Circular</span>
+    <div class="logo-preview">
+      <span class="size-label">Mark (full)</span>
+      <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="sealClip">
+            <rect x="8" y="8" width="84" height="46"/>
+          </clipPath>
+        </defs>
+        <!-- Outer circle -->
+        <circle cx="50" cy="50" r="44" stroke="#C4873A" stroke-width="0.7" fill="none"/>
+        <!-- Inner circle (thin, slightly smaller) -->
+        <circle cx="50" cy="50" r="40" stroke="rgba(196,135,58,0.3)" stroke-width="0.4" fill="none"/>
+        <!-- Mountains inside circle, clipped to upper half -->
+        <circle cx="50" cy="46" r="13" stroke="#C4873A" stroke-width="0.7" fill="none" clip-path="url(#sealClip)"/>
+        <polyline points="14,54 36,18 46,54" stroke="#C4873A" stroke-width="0.75" fill="none" stroke-linejoin="miter"/>
+        <polyline points="54,54 64,18 86,54" stroke="#C4873A" stroke-width="0.75" fill="none" stroke-linejoin="miter"/>
+        <!-- Text around bottom arc -->
+        <text x="50" y="74" font-family="'Cormorant Garamond', serif" font-size="10" font-weight="300" letter-spacing="6" fill="#C4873A" text-anchor="middle">APUS</text>
+        <text x="50" y="86" font-family="'Jost', sans-serif" font-size="5" font-weight="300" letter-spacing="3" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+      </svg>
+      <div class="divider"></div>
+      <span class="size-label">Nav</span>
+      <svg width="160" height="28" viewBox="0 0 200 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="navClipD">
+            <rect x="2" y="2" width="22" height="12"/>
+          </clipPath>
+        </defs>
+        <circle cx="13" cy="13" r="11" stroke="#C4873A" stroke-width="0.6" fill="none"/>
+        <circle cx="13" cy="13" r="8" stroke="rgba(196,135,58,0.3)" stroke-width="0.4" fill="none"/>
+        <circle cx="13" cy="11" r="4" stroke="#C4873A" stroke-width="0.6" fill="none" clip-path="url(#navClipD)"/>
+        <polyline points="4,14 10,5 13,14" stroke="#C4873A" stroke-width="0.65" fill="none"/>
+        <polyline points="13,14 16,5 22,14" stroke="#C4873A" stroke-width="0.65" fill="none"/>
+        <line x1="34" y1="4" x2="34" y2="24" stroke="rgba(196,135,58,0.3)" stroke-width="0.6"/>
+        <text x="46" y="17" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="300" letter-spacing="5" fill="#C4873A">APUS</text>
+        <text x="99" y="17" font-family="'Jost', sans-serif" font-size="6.5" font-weight="300" letter-spacing="3.5" fill="rgba(139,115,85,0.8)">WELLNESS</text>
+      </svg>
+    </div>
+    <p class="desc">Sigiliu circular cu munții și soarele înscrise. Evocă un brand heritage, tradiție, exclusivitate. Se scalează excelent pe ștampile, materiale tipărite, medalii.</p>
+  </div>
+
+  <!-- OPTION E: Abstract / ultra-minimal chevron + dot -->
+  <div class="card">
+    <span class="card-label">Opțiunea E — Abstracție Minimală</span>
+    <div class="logo-preview">
+      <span class="size-label">Mark (full)</span>
+      <svg width="160" height="90" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Two elegant angled strokes suggesting peaks -->
+        <line x1="50" y1="48" x2="80" y2="12" stroke="#C4873A" stroke-width="1" stroke-linecap="square"/>
+        <line x1="80" y1="12" x2="110" y2="48" stroke="#C4873A" stroke-width="1" stroke-linecap="square"/>
+        <!-- Small sun dot, centered at valley -->
+        <circle cx="80" cy="36" r="5" stroke="#C4873A" stroke-width="0.8" fill="none"/>
+        <!-- Horizontal baseline -->
+        <line x1="30" y1="48" x2="130" y2="48" stroke="rgba(196,135,58,0.35)" stroke-width="0.5"/>
+        <!-- Wordmark -->
+        <text x="80" y="66" font-family="'Cormorant Garamond', serif" font-size="16" font-weight="300" letter-spacing="8" fill="#C4873A" text-anchor="middle">APUS</text>
+        <text x="80" y="80" font-family="'Jost', sans-serif" font-size="7" font-weight="300" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+      </svg>
+      <div class="divider"></div>
+      <span class="size-label">Nav</span>
+      <svg width="160" height="28" viewBox="0 0 200 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="5" y1="18" x2="16" y2="5" stroke="#C4873A" stroke-width="0.9" stroke-linecap="square"/>
+        <line x1="16" y1="5" x2="27" y2="18" stroke="#C4873A" stroke-width="0.9" stroke-linecap="square"/>
+        <circle cx="16" cy="11" r="3.5" stroke="#C4873A" stroke-width="0.7" fill="none"/>
+        <line x1="37" y1="4" x2="37" y2="24" stroke="rgba(196,135,58,0.3)" stroke-width="0.6"/>
+        <text x="49" y="17" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="300" letter-spacing="5" fill="#C4873A">APUS</text>
+        <text x="102" y="17" font-family="'Jost', sans-serif" font-size="6.5" font-weight="300" letter-spacing="3.5" fill="rgba(139,115,85,0.8)">WELLNESS</text>
+      </svg>
+    </div>
+    <p class="desc">Ultra-minimalist — un chevron unghi drept și un cerc fin. Sugerează muntele și soarele fără să le reprezinte literal. Flexibil pe orice suprafață, modern-luxos.</p>
+  </div>
+
+</div>
+
+<!-- Context previews -->
+<p class="section-title">Cum arată pe site</p>
+
+<div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:2px;background:rgba(196,135,58,0.12);">
+
+  <!-- Nav simulation -->
+  <div style="background:#12191A;padding:32px 40px;">
+    <span style="font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:#8B7355;display:block;margin-bottom:20px;">Simulare Navigație</span>
+    <div style="background:rgba(28,33,32,0.85);backdrop-filter:blur(12px);padding:16px 32px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(196,135,58,0.1);">
+      <!-- Nav logo (Option A as example) -->
+      <svg width="150" height="24" viewBox="0 0 200 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><clipPath id="navPreview"><rect x="0" y="0" width="30" height="18"/></clipPath></defs>
+        <circle cx="15" cy="15" r="7" stroke="#C4873A" stroke-width="0.7" fill="none" clip-path="url(#navPreview)"/>
+        <polyline points="0,18 12,2 18,18" stroke="#C4873A" stroke-width="0.8" fill="none"/>
+        <polyline points="12,18 18,2 30,18" stroke="#C4873A" stroke-width="0.8" fill="none"/>
+        <line x1="40" y1="4" x2="40" y2="24" stroke="rgba(196,135,58,0.3)" stroke-width="0.6"/>
+        <text x="52" y="17" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="300" letter-spacing="5" fill="#C4873A">APUS</text>
+        <text x="105" y="17" font-family="'Jost', sans-serif" font-size="6.5" font-weight="300" letter-spacing="3.5" fill="rgba(139,115,85,0.8)">WELLNESS</text>
+      </svg>
+      <nav style="display:flex;gap:2rem;">
+        <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#8B7355;">Servicii</span>
+        <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#8B7355;">Experiență</span>
+        <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#8B7355;">Contact</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Footer simulation -->
+  <div style="background:#12191A;padding:32px 40px;">
+    <span style="font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:#8B7355;display:block;margin-bottom:20px;">Simulare Footer</span>
+    <div style="display:flex;align-items:center;gap:24px;border-top:1px solid rgba(139,115,85,0.25);padding-top:24px;">
+      <svg width="80" height="50" viewBox="0 0 160 90" fill="none">
+        <defs><clipPath id="footerClip"><rect x="0" y="0" width="160" height="52"/></clipPath></defs>
+        <circle cx="80" cy="44" r="18" stroke="#C4873A" stroke-width="0.8" fill="none" clip-path="url(#footerClip)"/>
+        <polyline points="4,52 52,6 68,52" stroke="#C4873A" stroke-width="0.9" fill="none"/>
+        <polyline points="92,52 108,6 156,52" stroke="#C4873A" stroke-width="0.9" fill="none"/>
+        <text x="80" y="70" font-family="'Cormorant Garamond', serif" font-size="16" font-weight="300" letter-spacing="8" fill="#C4873A" text-anchor="middle">APUS</text>
+        <text x="80" y="84" font-family="'Jost', sans-serif" font-size="7" font-weight="300" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+      </svg>
+      <div>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:#8B7355;margin-bottom:4px;">Apusul, adus la tine.</p>
+        <p style="font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.15em;color:rgba(139,115,85,0.5);">© 2025 APUS WELLNESS · CLUJ-NAPOCA, ROMÂNIA</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align:center;margin-top:48px;padding-bottom:60px;">
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:#8B7355;">Spune-ne varianta preferată (A, B, C, D sau E) și o implementăm.</p>
+</div>
+
+</body>
+</html>

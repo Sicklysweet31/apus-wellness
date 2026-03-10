@@ -1,0 +1,140 @@
+.section {
+  background-color: var(--color-forest-deep);
+  padding: var(--space-big) var(--space-xl);
+}
+
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-xl);
+  max-width: 560px;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--color-mist);
+  line-height: 1.2;
+  margin-top: 0.75rem;
+  margin-bottom: var(--space-medium);
+}
+
+.subtitle {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--color-warm-stone);
+  line-height: 1.75;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-bottom: var(--space-xl);
+  background: rgba(196, 135, 58, 0.15);
+}
+
+.card {
+  background: var(--color-forest-night);
+  padding: var(--space-xl) var(--space-large);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+  transition: transform 0.4s ease;
+  cursor: default;
+}
+
+.cardLabel {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: var(--text-tiny);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-warm-stone);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 3.5rem;
+  color: var(--color-sunset-gold);
+  line-height: 1;
+}
+
+.unit {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: var(--color-warm-stone);
+  letter-spacing: 0.05em;
+}
+
+.cardDesc {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: rgba(244, 237, 227, 0.6);
+}
+
+.featureList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.featureItem {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: var(--color-warm-stone);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-sunset-gold);
+  flex-shrink: 0;
+}
+
+.btn {
+  align-self: flex-start;
+  margin-top: var(--space-small);
+}
+
+.note {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: var(--text-small);
+  color: var(--color-warm-stone);
+  text-align: center;
+  line-height: 1.75;
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: var(--space-xl) var(--space-medium); }
+  .price { font-size: 2.75rem; }
+}

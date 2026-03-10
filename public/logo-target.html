@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APUS — Soare între vârfuri</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #111918; color: #F4EDE3; font-family: 'Jost', sans-serif; font-weight: 300; padding: 60px 40px; display: flex; flex-direction: column; align-items: center; gap: 50px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-style: italic; font-size: 1.7rem; color: #C4873A; text-align: center; }
+  .row { display: flex; gap: 50px; align-items: flex-end; flex-wrap: wrap; justify-content: center; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .lbl { font-size: .56rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(139,115,85,.38); }
+  .nb { background: rgba(20,28,27,.95); border: 1px solid rgba(196,135,58,.07); padding: 13px 22px; display: flex; justify-content: space-between; align-items: center; gap: 40px; width: 100%; max-width: 520px; }
+  .nl { display: flex; gap: 20px; }
+  .nl span { font-size: .56rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(139,115,85,.6); }
+</style>
+</head>
+<body>
+
+<h1>Soarele între vârfuri, sus — cu raze</h1>
+
+<div class="row">
+
+  <!-- A: Doi munți simetrici, soare sus între vârfuri, cu raze -->
+  <div class="col">
+    <span class="lbl">A — Simetric</span>
+    <svg width="200" height="120" viewBox="0 0 200 120" fill="none">
+      <!-- Raze solare care ies din spatele munților, la nivel de vârf -->
+      <line x1="100" y1="22" x2="100" y2="4"  stroke="#C4873A" stroke-width="0.55" stroke-opacity="0.5"/>
+      <line x1="100" y1="22" x2="86"  y2="6"  stroke="#C4873A" stroke-width="0.45" stroke-opacity="0.35" transform="rotate(-22,100,22)"/>
+      <line x1="100" y1="22" x2="114" y2="6"  stroke="#C4873A" stroke-width="0.45" stroke-opacity="0.35" transform="rotate(22,100,22)"/>
+      <line x1="100" y1="22" x2="74"  y2="10" stroke="#C4873A" stroke-width="0.4"  stroke-opacity="0.22" transform="rotate(-42,100,22)"/>
+      <line x1="100" y1="22" x2="126" y2="10" stroke="#C4873A" stroke-width="0.4"  stroke-opacity="0.22" transform="rotate(42,100,22)"/>
+      <line x1="100" y1="22" x2="64"  y2="18" stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.14" transform="rotate(-62,100,22)"/>
+      <line x1="100" y1="22" x2="136" y2="18" stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.14" transform="rotate(62,100,22)"/>
+      <!-- Cercul solar — centrat sus, la nivel de vârf -->
+      <circle cx="100" cy="22" r="14" stroke="#C4873A" stroke-width="0.9" fill="none"/>
+      <!-- Munte stânga — mic, în spate, palid -->
+      <path d="M 4,70 L 68,18 L 86,70"
+            stroke="#C4873A" stroke-width="0.75" stroke-linejoin="miter"
+            fill="none" stroke-opacity="0.5"/>
+      <!-- Munte dreapta — mic, în spate, palid -->
+      <path d="M 114,70 L 132,18 L 196,70"
+            stroke="#C4873A" stroke-width="0.75" stroke-linejoin="miter"
+            fill="none" stroke-opacity="0.5"/>
+      <!-- Munte stânga — mare, în față, solid -->
+      <path d="M 0,70 L 76,10 L 96,70 Z"
+            fill="#111918" stroke="#C4873A" stroke-width="1.1" stroke-linejoin="miter"/>
+      <!-- Munte dreapta — mare, în față, solid -->
+      <path d="M 104,70 L 124,10 L 200,70 Z"
+            fill="#111918" stroke="#C4873A" stroke-width="1.1" stroke-linejoin="miter"/>
+      <!-- Orizont -->
+      <line x1="0" y1="70" x2="200" y2="70" stroke="rgba(196,135,58,0.15)" stroke-width="0.5"/>
+      <!-- Wordmark -->
+      <text x="96" y="90" font-family="'Cormorant Garamond',serif" font-weight="300" font-size="22" letter-spacing="9" fill="#C4873A" text-anchor="middle">APUS</text>
+      <text x="97.5" y="104" font-family="'Jost',sans-serif" font-weight="300" font-size="7" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+    </svg>
+  </div>
+
+  <!-- B: Doi munți asimetrici — stânga mai mic, dreapta mai mare în față, soare sus -->
+  <div class="col">
+    <span class="lbl">B — Asimetric</span>
+    <svg width="200" height="120" viewBox="0 0 200 120" fill="none">
+      <!-- Raze -->
+      <line x1="96" y1="20" x2="96" y2="2"   stroke="#C4873A" stroke-width="0.55" stroke-opacity="0.5"/>
+      <line x1="96" y1="20" x2="80"  y2="5"  stroke="#C4873A" stroke-width="0.45" stroke-opacity="0.35" transform="rotate(-24,96,20)"/>
+      <line x1="96" y1="20" x2="112" y2="5"  stroke="#C4873A" stroke-width="0.45" stroke-opacity="0.35" transform="rotate(24,96,20)"/>
+      <line x1="96" y1="20" x2="68"  y2="10" stroke="#C4873A" stroke-width="0.4"  stroke-opacity="0.22" transform="rotate(-46,96,20)"/>
+      <line x1="96" y1="20" x2="124" y2="10" stroke="#C4873A" stroke-width="0.4"  stroke-opacity="0.22" transform="rotate(46,96,20)"/>
+      <line x1="96" y1="20" x2="58"  y2="17" stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.13" transform="rotate(-65,96,20)"/>
+      <line x1="96" y1="20" x2="134" y2="17" stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.13" transform="rotate(65,96,20)"/>
+      <!-- Soare -->
+      <circle cx="96" cy="20" r="14" stroke="#C4873A" stroke-width="0.9" fill="none"/>
+      <!-- Munte mic stânga în spate (mai jos = mai mic/departe) -->
+      <path d="M 10,70 L 60,24 L 82,70"
+            stroke="#C4873A" stroke-width="0.65" stroke-linejoin="miter"
+            fill="none" stroke-opacity="0.42"/>
+      <!-- Munte mic dreapta în spate -->
+      <path d="M 110,70 L 140,28 L 190,70"
+            stroke="#C4873A" stroke-width="0.65" stroke-linejoin="miter"
+            fill="none" stroke-opacity="0.42"/>
+      <!-- Munte mare stânga în față solid -->
+      <path d="M 0,70 L 84,8 L 102,70 Z"
+            fill="#111918" stroke="#C4873A" stroke-width="1.1" stroke-linejoin="miter"/>
+      <!-- Munte mare dreapta în față solid (puțin mai lat) -->
+      <path d="M 98,70 L 118,14 L 200,70 Z"
+            fill="#111918" stroke="#C4873A" stroke-width="1.1" stroke-linejoin="miter"/>
+      <line x1="0" y1="70" x2="200" y2="70" stroke="rgba(196,135,58,0.15)" stroke-width="0.5"/>
+      <text x="96" y="90" font-family="'Cormorant Garamond',serif" font-weight="300" font-size="22" letter-spacing="9" fill="#C4873A" text-anchor="middle">APUS</text>
+      <text x="97.5" y="104" font-family="'Jost',sans-serif" font-weight="300" font-size="7" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+    </svg>
+  </div>
+
+  <!-- C: Un munte în spate mic + soare + un munte mare în față (compoziție laterală) -->
+  <div class="col">
+    <span class="lbl">C — Strat dublu central</span>
+    <svg width="200" height="120" viewBox="0 0 200 120" fill="none">
+      <!-- Raze -->
+      <line x1="100" y1="18" x2="100" y2="2"  stroke="#C4873A" stroke-width="0.55" stroke-opacity="0.52"/>
+      <line x1="100" y1="18" x2="84"  y2="4"  stroke="#C4873A" stroke-width="0.5"  stroke-opacity="0.38" transform="rotate(-20,100,18)"/>
+      <line x1="100" y1="18" x2="116" y2="4"  stroke="#C4873A" stroke-width="0.5"  stroke-opacity="0.38" transform="rotate(20,100,18)"/>
+      <line x1="100" y1="18" x2="72"  y2="9"  stroke="#C4873A" stroke-width="0.42" stroke-opacity="0.24" transform="rotate(-40,100,18)"/>
+      <line x1="100" y1="18" x2="128" y2="9"  stroke="#C4873A" stroke-width="0.42" stroke-opacity="0.24" transform="rotate(40,100,18)"/>
+      <line x1="100" y1="18" x2="60"  y2="15" stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.15" transform="rotate(-60,100,18)"/>
+      <line x1="100" y1="18" x2="140" y2="15" stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.15" transform="rotate(60,100,18)"/>
+      <line x1="100" y1="18" x2="50"  y2="22" stroke="#C4873A" stroke-width="0.28" stroke-opacity="0.1"  transform="rotate(-78,100,18)"/>
+      <line x1="100" y1="18" x2="150" y2="22" stroke="#C4873A" stroke-width="0.28" stroke-opacity="0.1"  transform="rotate(78,100,18)"/>
+      <!-- Soare mai mare -->
+      <circle cx="100" cy="18" r="16" stroke="#C4873A" stroke-width="0.9" fill="none"/>
+      <!-- Munte în spate — mai mic, palid, centrat -->
+      <path d="M 20,70 L 100,20 L 180,70"
+            stroke="#C4873A" stroke-width="0.7" stroke-linejoin="miter"
+            fill="none" stroke-opacity="0.38"/>
+      <!-- Munte în față — mai lat, solid, acoperă baza soarelui -->
+      <path d="M 0,70 L 100,4 L 200,70 Z"
+            fill="#111918" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+      <line x1="0" y1="70" x2="200" y2="70" stroke="rgba(196,135,58,0.15)" stroke-width="0.5"/>
+      <text x="96" y="90" font-family="'Cormorant Garamond',serif" font-weight="300" font-size="22" letter-spacing="9" fill="#C4873A" text-anchor="middle">APUS</text>
+      <text x="97.5" y="104" font-family="'Jost',sans-serif" font-weight="300" font-size="7" letter-spacing="5" fill="#8B7355" text-anchor="middle">WELLNESS</text>
+    </svg>
+  </div>
+
+</div>
+
+<!-- Nav bar preview -->
+<div class="nb">
+  <svg width="190" height="26" viewBox="0 0 240 30" fill="none">
+    <line x1="15" y1="8"  x2="15" y2="1"  stroke="#C4873A" stroke-width="0.5" stroke-opacity="0.45"/>
+    <line x1="15" y1="8"  x2="10" y2="2"  stroke="#C4873A" stroke-width="0.4" stroke-opacity="0.3"  transform="rotate(-25,15,8)"/>
+    <line x1="15" y1="8"  x2="20" y2="2"  stroke="#C4873A" stroke-width="0.4" stroke-opacity="0.3"  transform="rotate(25,15,8)"/>
+    <line x1="15" y1="8"  x2="7"  y2="4"  stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.18" transform="rotate(-48,15,8)"/>
+    <line x1="15" y1="8"  x2="23" y2="4"  stroke="#C4873A" stroke-width="0.35" stroke-opacity="0.18" transform="rotate(48,15,8)"/>
+    <circle cx="15" cy="8" r="6" stroke="#C4873A" stroke-width="0.75" fill="none"/>
+    <path d="M 2,22 L 13,4 L 18,22" stroke="#C4873A" stroke-width="0.65" stroke-linejoin="miter" fill="none" stroke-opacity="0.4"/>
+    <path d="M 12,22 L 17,5 L 28,22" stroke="#C4873A" stroke-width="0.65" stroke-linejoin="miter" fill="none" stroke-opacity="0.4"/>
+    <path d="M 0,22 L 15,2 L 30,22 Z" fill="#111918" stroke="#C4873A" stroke-width="0.85" stroke-linejoin="miter"/>
+    <line x1="42" y1="4" x2="42" y2="26" stroke="rgba(196,135,58,.28)" stroke-width="0.5"/>
+    <text x="54" y="20" font-family="'Cormorant Garamond',serif" font-weight="400" font-size="17" letter-spacing="5" fill="#C4873A">APUS</text>
+    <text x="104" y="20" font-family="'Jost',sans-serif" font-weight="300" font-size="6.5" letter-spacing="3.5" fill="#8B7355">WELLNESS</text>
+  </svg>
+  <div class="nl"><span>Servicii</span><span>Experiență</span><span>Contact</span></div>
+</div>
+
+</body>
+</html>

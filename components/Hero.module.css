@@ -1,0 +1,122 @@
+.hero {
+  position: relative;
+  height: 100dvh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: -20% 0;
+  background:
+    radial-gradient(ellipse at 55% 45%, rgba(176, 92, 56, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 65%, rgba(45, 74, 62, 0.55) 0%, transparent 48%),
+    radial-gradient(ellipse at 80% 20%, rgba(196, 135, 58, 0.08) 0%, transparent 40%),
+    linear-gradient(168deg, #080f0b 0%, #1C2120 40%, #2D4A3E 72%, #120e07 100%);
+  will-change: transform;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(28, 33, 32, 0.15) 0%,
+    rgba(28, 33, 32, 0.55) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-sunset-gold);
+  margin-bottom: 2.5rem;
+  display: block;
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  line-height: 1;
+  gap: 0.1em;
+}
+
+.line {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: var(--heading-hero);
+  color: var(--color-mist);
+  letter-spacing: 0.02em;
+}
+
+.lineGold {
+  color: var(--color-sunset-gold);
+}
+
+.sub {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: rgba(244, 237, 227, 0.6);
+  letter-spacing: 0.04em;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.cta {
+  margin-top: 0.25rem;
+}
+
+/* Animated scroll line */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--color-sunset-gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .sub { font-size: 0.9rem; max-width: 300px; }
+  .cta { padding: 0.875rem 2rem; }
+}

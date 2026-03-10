@@ -1,0 +1,166 @@
+.section {
+  background-color: var(--color-forest-night);
+  padding: var(--space-big) var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(196, 135, 58, 0.05) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.inner {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: var(--color-mist);
+  line-height: 1.2;
+  margin-bottom: var(--space-medium);
+}
+
+.sub {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--color-warm-stone);
+  margin-bottom: var(--space-xl);
+  line-height: 1.75;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-large);
+  margin-bottom: var(--space-xl);
+  text-align: left;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fieldLabel {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: var(--text-tiny);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-warm-stone);
+}
+
+.input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(139, 115, 85, 0.4);
+  padding: 0.75rem 0;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--color-mist);
+  outline: none;
+  transition: border-color var(--transition-base);
+  border-radius: 0;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: rgba(139, 115, 85, 0.45);
+}
+
+.input:focus {
+  border-bottom-color: var(--color-sunset-gold);
+}
+
+.submitBtn {
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--space-small);
+  padding: 1.1rem 2rem;
+  font-size: 0.8rem;
+}
+
+/* Phone */
+.phoneRow {
+  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.phoneLabel {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: var(--text-small);
+  color: var(--color-warm-stone);
+  margin-bottom: 0.75rem;
+}
+
+.phoneNumbers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.phoneEntry {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.personName {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: var(--text-tiny);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-warm-stone);
+  min-width: 48px;
+}
+
+.phone {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.6rem;
+  color: var(--color-sunset-gold);
+  transition: color var(--transition-base);
+}
+
+.phone:hover {
+  color: var(--color-ember);
+}
+
+.signature {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-warm-stone);
+}
+
+@media (max-width: 768px) {
+  .section { padding: var(--space-xl) var(--space-medium); }
+  .headline { font-size: 2rem; }
+}
