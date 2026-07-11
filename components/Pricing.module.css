@@ -4,7 +4,7 @@
 }
 
 .inner {
-  max-width: 1000px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 300;
   font-style: italic;
   font-size: clamp(2rem, 4vw, 3rem);
@@ -24,39 +24,73 @@
   margin-bottom: var(--space-medium);
 }
 
-.subtitle {
-  font-family: 'Jost', sans-serif;
-  font-weight: 300;
-  font-size: 0.95rem;
-  color: var(--color-warm-stone);
-  line-height: 1.75;
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
+  gap: var(--space-medium);
+  align-items: stretch;
   margin-bottom: var(--space-xl);
-  background: rgba(196, 135, 58, 0.15);
 }
 
 .card {
-  background: var(--color-forest-night);
-  padding: var(--space-xl) var(--space-large);
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-medium);
-  transition: transform 0.4s ease;
+  padding: var(--space-xl) var(--space-large);
   cursor: default;
 }
 
+/* Tier 1 — quiet, but alive */
+.cardMat {
+  background: var(--color-forest-night);
+  border: 1px solid rgba(196, 135, 58, 0.2);
+}
+
+/* Tier 2 — luminous gold, the anchor */
+.cardFeatured {
+  background: var(--color-forest-night);
+  border: 1px solid var(--color-sunset-gold);
+  box-shadow: 0 0 48px rgba(196, 135, 58, 0.18);
+}
+
+/* Tier 3 — VIP */
+.cardVip {
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(196, 135, 58, 0.12) 0%, transparent 55%),
+    linear-gradient(160deg, #12100c 0%, var(--color-forest-night) 70%);
+  border: 1px solid rgba(196, 135, 58, 0.35);
+}
+
+.topChip {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-forest-night);
+  background: var(--color-sunset-gold);
+  padding: 0.375rem 1rem;
+  white-space: nowrap;
+}
+
+.topChipVip {
+  color: var(--color-sunset-gold);
+  background: #12100c;
+  border: 1px solid rgba(196, 135, 58, 0.5);
+}
+
 .cardLabel {
-  font-family: 'Jost', sans-serif;
-  font-weight: 300;
+  font-family: var(--font-sans);
+  font-weight: 400;
   font-size: var(--text-tiny);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-warm-stone);
+  color: var(--color-mist);
 }
 
 .priceRow {
@@ -66,7 +100,7 @@
 }
 
 .price {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 300;
   font-size: 3.5rem;
   color: var(--color-sunset-gold);
@@ -74,18 +108,50 @@
 }
 
 .unit {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 0.85rem;
   color: var(--color-warm-stone);
   letter-spacing: 0.05em;
 }
 
-.cardDesc {
-  font-family: 'Jost', sans-serif;
+.availability {
+  font-family: var(--font-sans);
   font-weight: 300;
-  font-size: 0.9rem;
-  color: rgba(244, 237, 227, 0.6);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(244, 237, 227, 0.55);
+}
+
+.savingsBadge {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-sunset-gold);
+  background: rgba(196, 135, 58, 0.1);
+  border: 1px solid rgba(196, 135, 58, 0.3);
+  padding: 0.625rem 0.875rem;
+}
+
+.listBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.listBlockGrow {
+  flex: 1;
+}
+
+.listTitle {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-warm-stone);
 }
 
 .featureList {
@@ -93,16 +159,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  flex: 1;
 }
 
 .featureItem {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 0.875rem;
-  color: var(--color-warm-stone);
+  line-height: 1.5;
+  color: rgba(244, 237, 227, 0.7);
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.75rem;
 }
 
@@ -113,15 +179,17 @@
   border-radius: 50%;
   background: var(--color-sunset-gold);
   flex-shrink: 0;
+  transform: translateY(-2px);
 }
 
 .btn {
-  align-self: flex-start;
+  align-self: stretch;
+  text-align: center;
   margin-top: var(--space-small);
 }
 
 .note {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: var(--text-small);
   color: var(--color-warm-stone);
@@ -130,8 +198,17 @@
   opacity: 0.7;
 }
 
+@media (min-width: 901px) {
+  .cardFeatured {
+    transform: translateY(-12px);
+  }
+}
+
 @media (max-width: 900px) {
-  .cards { grid-template-columns: 1fr; }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-large);
+  }
 }
 
 @media (max-width: 768px) {

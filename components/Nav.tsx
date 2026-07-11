@@ -19,7 +19,7 @@ export default function Nav() {
   return (
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
-        <a href="#" className={styles.wordmark} aria-label="APUS Wellness">
+        <a href="#" className={styles.wordmark}>
           <Logo variant="nav" />
         </a>
         <ul className={styles.links}>

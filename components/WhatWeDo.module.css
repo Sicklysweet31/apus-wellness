@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 400;
   font-size: var(--heading-display);
   color: var(--color-mist);
@@ -40,7 +40,7 @@
 }
 
 .number {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: var(--text-small);
   letter-spacing: 0.2em;
@@ -49,7 +49,7 @@
 }
 
 .cardTitle {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 600;
   font-size: var(--heading-h3);
   color: var(--color-mist);
@@ -58,7 +58,7 @@
 }
 
 .cardBody {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: var(--text-body);
   color: rgba(244, 237, 227, 0.6);

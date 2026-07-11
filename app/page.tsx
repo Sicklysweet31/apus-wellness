@@ -1,13 +1,12 @@
 import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Philosophy from "@/components/Philosophy";
 import WhatWeDo from "@/components/WhatWeDo";
-import Experience from "@/components/Experience";
 import Gallery from "@/components/Gallery";
 import WhatsIncluded from "@/components/WhatsIncluded";
+import Testimonials from "@/components/Testimonials";
 import Pricing from "@/components/Pricing";
-import About from "@/components/About";
+import Requirements from "@/components/Requirements";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -18,13 +17,12 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Philosophy />
         <WhatWeDo />
-        <Experience />
         <Gallery />
         <WhatsIncluded />
+        <Testimonials />
         <Pricing />
-        <About />
+        <Requirements />
         <Contact />
       </main>
       <Footer />

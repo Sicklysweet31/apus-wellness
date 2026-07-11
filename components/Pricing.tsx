@@ -3,29 +3,78 @@
 import { motion } from "framer-motion";
 import styles from "./Pricing.module.css";
 
-const plans = [
+type Tier = "mat" | "featured" | "vip";
+
+const plans: {
+  tier: Tier;
+  name: string;
+  price: string;
+  availability: string;
+  recommended: string[];
+  includes: string[];
+  badge?: string;
+  topChip?: string;
+}[] = [
   {
-    label: "O Zi",
-    price: "600",
-    unit: "lei",
-    desc: "Experiența completă pentru o zi",
-    features: ["Livrare & instalare", "Suport pe toată durata", "Colectare & curățare"],
+    tier: "mat",
+    name: "One-Day Escape",
+    price: "800",
+    availability: "Exclusiv Luni–Joi · 24 ore",
+    recommended: [
+      "O surpriză romantică în cuplu",
+      "O seară de deconectare după birou",
+      "O aniversare intimă în timpul săptămânii",
+    ],
+    includes: [
+      "Jacuzzi Pelican Bay 8 pers.",
+      "Încălzire rapidă GPL 35kW",
+      "Igienizare clinică",
+      "Montaj Zero Efort",
+    ],
   },
   {
-    label: "2 Zile",
-    price: "500",
-    unit: "lei / zi",
-    desc: "Discount pentru weekenduri și retreate",
-    features: ["Livrare & instalare", "Suport pe toată durata", "Colectare & curățare"],
+    tier: "featured",
+    name: "Mid-Week Retreat",
+    price: "990",
+    availability: "Exclusiv Luni–Joi · 4 Zile / 3 Nopți",
+    topChip: "★ Best Value",
+    recommended: [
+      "Deconectare zilnică după muncă",
+      "Profesioniști remote (Work from Home & Spa)",
+      "Familii sau grupuri care caută relaxare prelungită la munte",
+    ],
+    includes: [
+      "Tot ce conține pachetul de o zi",
+      "Kit simplu de menținere a apei",
+    ],
+    badge: "Adaugi doar 190 lei pentru încă 3 zile complete de relaxare!",
   },
   {
-    label: "Peste 2 Zile",
-    price: "450",
-    unit: "lei / zi",
-    desc: "Cel mai bun raport pentru vacanțe extinse",
-    features: ["Livrare & instalare", "Suport pe toată durata", "Colectare & curățare"],
+    tier: "vip",
+    name: "Weekend Resort Premium",
+    price: "1.390",
+    availability: "Vineri–Duminică/Luni · tot weekend-ul",
+    topChip: "Premium",
+    recommended: [
+      "Petreceri private",
+      "Aniversări cu mulți invitați",
+      "Evenimente memorabile la cabane",
+    ],
+    includes: [
+      "Set-up complet premium",
+      "Pachet Ambiance (Boxă premium, Lumini)",
+      "Pachet Hospitality (Frapieră cu pahare)",
+      "Surpriză de bun-venit",
+      "Suport non-stop",
+    ],
   },
 ];
+
+const tierClass: Record<Tier, string> = {
+  mat: styles.cardMat,
+  featured: styles.cardFeatured,
+  vip: styles.cardVip,
+};
 
 export default function Pricing() {
   return (
@@ -39,7 +88,7 @@ export default function Pricing() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
           >
-            Prețuri
+            Pachete
           </motion.span>
           <motion.h2
             className={styles.title}
@@ -50,44 +99,70 @@ export default function Pricing() {
           >
             Prețuri clare, fără surprize.
           </motion.h2>
-          <motion.p
-            className={styles.subtitle}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Fiecare experiență este personalizată în funcție de locație, durată și mărimea grupului.
-          </motion.p>
         </div>
 
         <div className={styles.cards}>
           {plans.map((plan, i) => (
             <motion.div
-              key={i}
-              className={styles.card}
+              key={plan.name}
+              className={`${styles.card} ${tierClass[plan.tier]}`}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: i * 0.15 }}
-              whileHover={{ y: -4 }}
             >
-              <span className={styles.cardLabel}>{plan.label}</span>
+              {plan.topChip && (
+                <span
+                  className={`${styles.topChip} ${
+                    plan.tier === "vip" ? styles.topChipVip : ""
+                  }`}
+                >
+                  {plan.topChip}
+                </span>
+              )}
+
+              <span className={styles.cardLabel}>{plan.name}</span>
+
               <div className={styles.priceRow}>
                 <span className={styles.price}>{plan.price}</span>
-                {plan.unit && <span className={styles.unit}>{plan.unit}</span>}
+                <span className={styles.unit}>RON</span>
               </div>
-              <p className={styles.cardDesc}>{plan.desc}</p>
-              <ul className={styles.featureList}>
-                {plan.features.map((f) => (
-                  <li key={f} className={styles.featureItem}>
-                    <span className={styles.dot} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="#contact" className={`btn-outline-gold ${styles.btn}`}>
-                Solicită ofertă
+
+              <p className={styles.availability}>{plan.availability}</p>
+
+              {plan.badge && <p className={styles.savingsBadge}>{plan.badge}</p>}
+
+              <div className={styles.listBlock}>
+                <span className={styles.listTitle}>Recomandat pentru</span>
+                <ul className={styles.featureList}>
+                  {plan.recommended.map((r) => (
+                    <li key={r} className={styles.featureItem}>
+                      <span className={styles.dot} />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={`${styles.listBlock} ${styles.listBlockGrow}`}>
+                <span className={styles.listTitle}>Include</span>
+                <ul className={styles.featureList}>
+                  {plan.includes.map((f) => (
+                    <li key={f} className={styles.featureItem}>
+                      <span className={styles.dot} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a
+                href="#contact"
+                className={`${
+                  plan.tier === "featured" ? "btn-filled-gold" : "btn-outline-gold"
+                } ${styles.btn}`}
+              >
+                Rezervă Pachetul
               </a>
             </motion.div>
           ))}
@@ -100,9 +175,8 @@ export default function Pricing() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Prețurile afișate sunt orientative — pot fi mai mici sau mai mari în funcție de cerințe.
-          Distanța, numărul de persoane și serviciile adiționale influențează prețul final.
-          Suntem transparenți în orice ofertă.
+          Toate pachetele includ livrare, montaj, igienizare și colectare.
+          Pentru locații la peste 30 km de Huedin se adaugă o taxă de transport.
         </motion.p>
       </div>
     </section>

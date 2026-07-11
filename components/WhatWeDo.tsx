@@ -6,18 +6,18 @@ import styles from "./WhatWeDo.module.css";
 const cards = [
   {
     number: "01",
-    title: "Rezervi",
-    body: "Ne spui unde ești, ce dată ai în minte și câți sunteți. Facem o ofertă personalizată maxim în câteva ore.",
+    title: "Alegi locația",
+    body: "Fie că este curtea casei tale sau o cabană retrasă, avem nevoie doar de o sursă de apă și o priză standard de 220V pentru pompă, filtrare și lumini. De restul ne ocupăm noi.",
   },
   {
     number: "02",
-    title: "Noi instalăm totul",
-    body: "Ajungem la locația ta, instalăm jacuzzi-ul, îți explicăm ce trebuie să știi. Și plecăm.",
+    title: "Montaj Ultra-Rapid",
+    body: "Spre deosebire de ciubărele clasice care se încălzesc greu, arzătorul nostru GPL de 35kW aduce apa la 38°C în doar 2–3 ore. Montajul este 100% sigur pentru proprietatea ta.",
   },
   {
     number: "03",
-    title: "Seara e a voastră",
-    body: "Apă caldă, cer deschis, oamenii tăi. La final revenim noi. Tu nu te ocupi de nimic.",
+    title: "Zero Efort",
+    body: "Te bucuri de hidromasaj și lumini ambientale alături de invitați. La final, noi evacuăm apa în siguranță și strângem echipamentul fără să lăsăm urme.",
   },
 ];
 

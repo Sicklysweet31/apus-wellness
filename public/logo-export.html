@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APUS Wellness — Logo Export</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #111;
+      color: #F4EDE3;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 48px 32px;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8B7355;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 28px;
+      font-weight: 300;
+      color: #C4873A;
+      margin-bottom: 48px;
+    }
+    .preview {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+      align-items: flex-end;
+    }
+    .preview-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .preview-item span {
+      font-size: 11px;
+      color: #8B7355;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .preview-box {
+      background: #1C2120;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(196,135,58,0.15);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+    }
+    .card {
+      background: #1a1a1a;
+      border: 1px solid rgba(196,135,58,0.12);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 400;
+      color: #F4EDE3;
+    }
+    .card-meta {
+      font-size: 12px;
+      color: #8B7355;
+      letter-spacing: 1px;
+    }
+    button {
+      background: transparent;
+      border: 1px solid #C4873A;
+      color: #C4873A;
+      padding: 10px 20px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+      width: 100%;
+    }
+    button:hover {
+      background: #C4873A;
+      color: #1C2120;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8B7355;
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+    canvas { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>APUS Wellness</h1>
+  <h2>Logo Export</h2>
+
+  <div class="section-label">Preview</div>
+  <div class="preview">
+    <div class="preview-item">
+      <div class="preview-box" style="width:120px;height:120px;">
+        <svg viewBox="0 0 100 58" xmlns="http://www.w3.org/2000/svg" fill="none" width="90" height="52">
+          <defs><clipPath id="sc0"><rect x="0" y="0" width="100" height="40"/></clipPath></defs>
+          <circle cx="50" cy="40" r="28" stroke="#C4873A" stroke-width="1.2" clip-path="url(#sc0)"/>
+          <path d="M 0,40 L 20,18 L 36,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+          <path d="M 28,40 L 50,8 L 72,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.5" stroke-linejoin="miter"/>
+          <path d="M 64,40 L 80,18 L 100,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <span>Dark BG</span>
+    </div>
+    <div class="preview-item">
+      <div class="preview-box" style="width:120px;height:120px;background:transparent;border:1px dashed rgba(196,135,58,0.3);">
+        <svg viewBox="0 0 100 58" xmlns="http://www.w3.org/2000/svg" fill="none" width="90" height="52">
+          <defs><clipPath id="sc1"><rect x="0" y="0" width="100" height="40"/></clipPath></defs>
+          <circle cx="50" cy="40" r="28" stroke="#C4873A" stroke-width="1.2" clip-path="url(#sc1)"/>
+          <path d="M 0,40 L 20,18 L 36,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+          <path d="M 28,40 L 50,8 L 72,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.5" stroke-linejoin="miter"/>
+          <path d="M 64,40 L 80,18 L 100,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+        </svg>
+      </div>
+      <span>Transparent BG</span>
+    </div>
+
+    <!-- Stacked with text preview -->
+    <div class="preview-item">
+      <div class="preview-box" style="width:140px;height:140px;flex-direction:column;gap:4px;">
+        <svg viewBox="0 0 100 41" xmlns="http://www.w3.org/2000/svg" fill="none" width="110" height="37">
+          <defs><clipPath id="sc2"><rect x="0" y="0" width="100" height="40"/></clipPath></defs>
+          <circle cx="50" cy="40" r="28" stroke="#C4873A" stroke-width="1.2" clip-path="url(#sc2)"/>
+          <path d="M 0,40 L 20,18 L 36,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+          <path d="M 28,40 L 50,8 L 72,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.5" stroke-linejoin="miter"/>
+          <path d="M 64,40 L 80,18 L 100,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+        </svg>
+        <div style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:18px;letter-spacing:5px;color:#C4873A;line-height:1;">APUS</div>
+        <div style="font-family:'Jost',Helvetica,sans-serif;font-weight:300;font-size:7px;letter-spacing:2.5px;color:#A8916A;line-height:1;">WELLNESS & SPA</div>
+      </div>
+      <span>Stacked + Text</span>
+    </div>
+
+    <!-- Horizontal banner preview -->
+    <div class="preview-item">
+      <div class="preview-box" style="width:260px;height:88px;flex-direction:row;gap:0;padding:0 16px;justify-content:flex-start;align-items:center;">
+        <svg viewBox="0 0 100 58" xmlns="http://www.w3.org/2000/svg" fill="none" width="52" height="30">
+          <defs><clipPath id="sc3"><rect x="0" y="0" width="100" height="40"/></clipPath></defs>
+          <circle cx="50" cy="40" r="28" stroke="#C4873A" stroke-width="1.2" clip-path="url(#sc3)"/>
+          <path d="M 0,40 L 20,18 L 36,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+          <path d="M 28,40 L 50,8 L 72,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.5" stroke-linejoin="miter"/>
+          <path d="M 64,40 L 80,18 L 100,40 Z" fill="#1C2120" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+        </svg>
+        <div style="width:1px;height:40px;background:rgba(196,135,58,0.35);margin:0 14px;"></div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:22px;letter-spacing:6px;color:#C4873A;line-height:1;">APUS</div>
+          <div style="font-family:'Jost',Helvetica,sans-serif;font-weight:300;font-size:7px;letter-spacing:3px;color:#A8916A;line-height:1;">WELLNESS & SPA</div>
+        </div>
+      </div>
+      <span>Horizontal Banner</span>
+    </div>
+  </div>
+
+  <div class="section-label">Download — Dark Background (for social media)</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Instagram · TikTok</div>
+        <div class="card-meta">1080 × 1080 px · PNG</div>
+      </div>
+      <button onclick="downloadDark(1080, 'apus-logo-instagram-1080')">Download</button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Facebook</div>
+        <div class="card-meta">800 × 800 px · PNG</div>
+      </div>
+      <button onclick="downloadDark(800, 'apus-logo-facebook-800')">Download</button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Twitter · X · LinkedIn</div>
+        <div class="card-meta">400 × 400 px · PNG</div>
+      </div>
+      <button onclick="downloadDark(400, 'apus-logo-twitter-400')">Download</button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">WhatsApp</div>
+        <div class="card-meta">500 × 500 px · PNG</div>
+      </div>
+      <button onclick="downloadDark(500, 'apus-logo-whatsapp-500')">Download</button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Phone · App Icon</div>
+        <div class="card-meta">512 × 512 px · PNG</div>
+      </div>
+      <button onclick="downloadDark(512, 'apus-logo-phone-512')">Download</button>
+    </div>
+  </div>
+
+  <div class="section-label">Download — Transparent Background</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">High Resolution</div>
+        <div class="card-meta">1080 × 1080 px · PNG · Transparent</div>
+      </div>
+      <button onclick="downloadTransparent(1080, 'apus-logo-transparent-1080')">Download</button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Standard</div>
+        <div class="card-meta">512 × 512 px · PNG · Transparent</div>
+      </div>
+      <button onclick="downloadTransparent(512, 'apus-logo-transparent-512')">Download</button>
+    </div>
+  </div>
+
+  <div class="section-label">Download — With Text (APUS WELLNESS)</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Stacked · Instagram / TikTok</div>
+        <div class="card-meta">1080 × 1080 px · Mark + APUS + WELLNESS</div>
+      </div>
+      <button onclick="downloadWithText(1080, 'apus-logo-text-1080')">Download</button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Stacked · WhatsApp / Facebook</div>
+        <div class="card-meta">800 × 800 px · Mark + APUS + WELLNESS</div>
+      </div>
+      <button onclick="downloadWithText(800, 'apus-logo-text-800')">Download</button>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Horizontal Banner</div>
+        <div class="card-meta">1500 × 500 px · Mark + APUS · WELLNESS side by side</div>
+      </div>
+      <button onclick="downloadBanner('apus-logo-banner-1500x500')">Download</button>
+    </div>
+  </div>
+
+  <canvas id="c"></canvas>
+
+  <script>
+    // The SVG mark — exact same geometry as Logo.tsx mark variant
+    // Mountains use transparent fill for the transparent-bg version,
+    // and #1C2120 fill for the dark-bg version.
+    function buildSVG(mountainFill) {
+      return `<svg viewBox="0 0 100 41" xmlns="http://www.w3.org/2000/svg" fill="none" width="100" height="41">
+        <defs>
+          <clipPath id="sun-clip">
+            <rect x="0" y="0" width="100" height="40"/>
+          </clipPath>
+        </defs>
+        <circle cx="50" cy="40" r="28" stroke="#C4873A" stroke-width="1.2" clip-path="url(#sun-clip)"/>
+        <path d="M 0,40 L 20,18 L 36,40 Z"  fill="${mountainFill}" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+        <path d="M 28,40 L 50,8  L 72,40 Z"  fill="${mountainFill}" stroke="#C4873A" stroke-width="1.5" stroke-linejoin="miter"/>
+        <path d="M 64,40 L 80,18 L 100,40 Z" fill="${mountainFill}" stroke="#C4873A" stroke-width="1.2" stroke-linejoin="miter"/>
+      </svg>`;
+    }
+
+    function renderToPNG(size, bgColor, mountainFill, filename) {
+      const canvas = document.getElementById('c');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      // Fill background
+      if (bgColor) {
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, size, size);
+      } else {
+        ctx.clearRect(0, 0, size, size);
+      }
+
+      // Build SVG at high resolution
+      // The logo aspect ratio is 100:58. We fit it inside the square with 15% padding.
+      const padding = size * 0.15;
+      const availW = size - padding * 2;
+      const availH = size - padding * 2;
+      // Logo natural ratio: 100w / 58h = 1.724
+      const logoRatio = 100 / 58;
+      let drawW, drawH;
+      if (availW / availH > logoRatio) {
+        drawH = availH;
+        drawW = drawH * logoRatio;
+      } else {
+        drawW = availW;
+        drawH = drawW / logoRatio;
+      }
+      const drawX = (size - drawW) / 2;
+      const drawY = (size - drawH) / 2;
+
+      const svgStr = buildSVG(mountainFill);
+      const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, drawX, drawY, drawW, drawH);
+        URL.revokeObjectURL(url);
+        // Download
+        const link = document.createElement('a');
+        link.download = filename + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+      img.src = url;
+    }
+
+    function downloadDark(size, filename) {
+      renderToPNG(size, '#1C2120', '#1C2120', filename);
+    }
+
+    function downloadTransparent(size, filename) {
+      renderToPNG(size, null, '#1C2120', filename);
+    }
+
+    // Force fonts to actually load before canvas use
+    async function ensureFonts() {
+      await Promise.all([
+        document.fonts.load("300 48px 'Cormorant Garamond'"),
+        document.fonts.load("300 16px 'Jost'")
+      ]);
+    }
+
+    // Matches preview box: 140×140, svg 80×46, gap 6px, APUS 18px ls5, WELLNESS 7px ls2.5
+    async function downloadWithText(size, filename) {
+      await ensureFonts();
+      const canvas = document.getElementById('c');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#1C2120';
+      ctx.fillRect(0, 0, size, size);
+
+      const s = size / 140; // scale from preview box
+      const markW = 110 * s;
+      const markH = 37 * s;
+      const gap   = 4  * s;
+      const apusFontSize     = 18 * s;
+      const wellnessFontSize = 7  * s;
+
+      // Center the whole block vertically
+      const totalH = markH + gap + apusFontSize + gap + wellnessFontSize;
+      const startY = (size - totalH) / 2;
+      const markX  = (size - markW) / 2;
+
+      const svgStr = buildSVG('#1C2120');
+      const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, markX, startY, markW, markH);
+        URL.revokeObjectURL(url);
+
+        ctx.textAlign = 'center';
+
+        // APUS
+        ctx.fillStyle = '#C4873A';
+        ctx.letterSpacing = (5 * s) + 'px';
+        ctx.font = `300 ${apusFontSize}px 'Cormorant Garamond', Georgia, serif`;
+        ctx.fillText('APUS', size / 2, startY + markH + gap + apusFontSize * 0.85);
+
+        // WELLNESS & SPA
+        ctx.fillStyle = '#A8916A';
+        ctx.letterSpacing = (2.5 * s) + 'px';
+        ctx.font = `300 ${wellnessFontSize}px 'Jost', Helvetica, sans-serif`;
+        ctx.fillText('WELLNESS & SPA', size / 2, startY + markH + gap + apusFontSize + gap + wellnessFontSize * 0.85);
+
+        const link = document.createElement('a');
+        link.download = filename + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+      img.src = url;
+    }
+
+    // Matches banner preview: 260×88, svg 52×30, leftpad 16, sep 40h margin 14, APUS 22px ls6, WELLNESS 7px ls3
+    async function downloadBanner(filename) {
+      await ensureFonts();
+      const W = 1500, H = 500;
+      const canvas = document.getElementById('c');
+      canvas.width = W;
+      canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = '#1C2120';
+      ctx.fillRect(0, 0, W, H);
+
+      const s = H / 88; // scale from preview banner height
+      const markW  = 52 * s;
+      const markH  = 30 * s;
+      const leftPad = 16 * s;
+      const sepMargin = 14 * s;
+      const sepH = 40 * s;
+      const apusFontSize     = 22 * s;
+      const wellnessFontSize = 7  * s;
+
+      const markX = leftPad;
+      const markY = (H - markH) / 2;
+
+      const svgStr = buildSVG('#1C2120');
+      const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, markX, markY, markW, markH);
+        URL.revokeObjectURL(url);
+
+        // Separator line
+        const sepX = markX + markW + sepMargin;
+        ctx.strokeStyle = 'rgba(196,135,58,0.35)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(sepX, (H - sepH) / 2);
+        ctx.lineTo(sepX, (H + sepH) / 2);
+        ctx.stroke();
+
+        const textX = sepX + sepMargin;
+        const textBlockH = apusFontSize + gap + wellnessFontSize;
+        const textStartY = (H - textBlockH) / 2;
+
+        // APUS
+        ctx.fillStyle = '#C4873A';
+        ctx.letterSpacing = (6 * s) + 'px';
+        ctx.font = `300 ${apusFontSize}px 'Cormorant Garamond', Georgia, serif`;
+        ctx.textAlign = 'left';
+        ctx.fillText('APUS', textX, textStartY + apusFontSize * 0.85);
+
+        // WELLNESS & SPA
+        ctx.fillStyle = '#A8916A';
+        ctx.letterSpacing = (3 * s) + 'px';
+        ctx.font = `300 ${wellnessFontSize}px 'Jost', Helvetica, sans-serif`;
+        ctx.fillText('WELLNESS & SPA', textX, textStartY + apusFontSize + gap + wellnessFontSize * 0.85);
+
+        const link = document.createElement('a');
+        link.download = filename + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+      img.src = url;
+    }
+  </script>
+</body>
+</html>

@@ -13,7 +13,7 @@
 }
 
 .title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 400;
   font-size: var(--heading-display);
   color: var(--color-mist);
@@ -60,7 +60,7 @@
 }
 
 .featureTitle {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 600;
   font-size: 1.4rem;
   color: var(--color-mist);
@@ -68,7 +68,7 @@
 }
 
 .featureBody {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 0.9rem;
   color: var(--color-warm-stone);

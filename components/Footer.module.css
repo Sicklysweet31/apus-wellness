@@ -18,12 +18,11 @@
 }
 
 .logo {
-  opacity: 0.9;
   width: 180px;
 }
 
 .tagline {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 300;
   font-style: italic;
   font-size: 1rem;
@@ -46,7 +45,7 @@
 }
 
 .navLink {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: var(--text-tiny);
   letter-spacing: 0.2em;
@@ -67,7 +66,7 @@
 }
 
 .langBtn {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 0.65rem;
   letter-spacing: 0.15em;
@@ -93,24 +92,15 @@
   padding: 1.25rem var(--space-xl);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .copy {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
-  color: rgba(139, 115, 85, 0.55);
-}
-
-.ig {
-  color: rgba(139, 115, 85, 0.55);
-  transition: color var(--transition-base);
-}
-
-.ig:hover {
-  color: var(--color-sunset-gold);
+  color: var(--color-warm-stone);
 }
 
 @media (max-width: 768px) {

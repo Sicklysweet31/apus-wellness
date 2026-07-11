@@ -3,12 +3,111 @@
   height: auto;
 }
 
-.nav {
-  width: 210px;
-  height: auto;
+.lockup {
+  display: inline-flex;
+  align-items: center;
 }
 
-.full {
-  width: 160px;
+.lockupMark {
   height: auto;
+  flex-shrink: 0;
+}
+
+.divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(196, 135, 58, 0.35);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.word {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  line-height: 1;
+  color: var(--color-sunset-gold);
+}
+
+.sub {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-warm-stone);
+}
+
+.amp {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--color-sunset-gold);
+}
+
+/* Nav size */
+.lockupNav {
+  gap: 0.875rem;
+}
+
+.lockupNav .lockupMark {
+  width: 36px;
+}
+
+.lockupNav .divider {
+  margin: 0.25rem 0;
+}
+
+.lockupNav .word {
+  font-size: 1.3rem;
+}
+
+.lockupNav .sub {
+  font-size: 0.58rem;
+  margin-left: 0.75rem;
+}
+
+.lockupNav .amp {
+  font-size: 0.8rem;
+}
+
+/* Full size (footer, mobile overlay) */
+.lockupFull {
+  gap: 1.125rem;
+}
+
+.lockupFull .lockupMark {
+  width: 48px;
+}
+
+.lockupFull .divider {
+  margin: 0.375rem 0;
+}
+
+.lockupFull .word {
+  font-size: 1.7rem;
+}
+
+.lockupFull .sub {
+  font-size: 0.7rem;
+  margin-left: 0.875rem;
+}
+
+.lockupFull .amp {
+  font-size: 1rem;
+}
+
+@media (max-width: 480px) {
+  .lockupNav .word {
+    font-size: 1.15rem;
+  }
+
+  .lockupNav .sub {
+    font-size: 0.52rem;
+    margin-left: 0.625rem;
+  }
 }

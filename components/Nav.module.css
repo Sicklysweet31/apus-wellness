@@ -31,7 +31,7 @@
 }
 
 .link {
-  font-family: 'Jost', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 300;
   font-size: 0.75rem;
   letter-spacing: 0.25em;
@@ -111,7 +111,7 @@
 }
 
 .overlayLink {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-serif);
   font-weight: 300;
   font-style: italic;
   font-size: 2.5rem;

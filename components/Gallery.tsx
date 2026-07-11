@@ -1,55 +1,84 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./Gallery.module.css";
+import drumImg from "@/public/images/story-drum.webp";
+import montajImg from "@/public/images/story-montaj.webp";
+import searaImg from "@/public/images/story-seara.webp";
 
-const gradients = [
-  // Large portrait — left
-  `radial-gradient(ellipse at 65% 35%, rgba(196, 135, 58, 0.25) 0%, transparent 55%),
-   radial-gradient(ellipse at 25% 75%, rgba(176, 92, 56, 0.18) 0%, transparent 45%),
-   linear-gradient(155deg, #0a110a 0%, #1C2120 45%, #2D4A3E 80%, #110e0a 100%)`,
-  // Top right landscape
-  `radial-gradient(ellipse at 50% 30%, rgba(196, 135, 58, 0.2) 0%, transparent 60%),
-   linear-gradient(135deg, #111a0f 0%, #1C2120 50%, #2a3828 100%)`,
-  // Bottom right landscape
-  `radial-gradient(ellipse at 40% 60%, rgba(176, 92, 56, 0.22) 0%, transparent 50%),
-   linear-gradient(145deg, #0d1512 0%, #2D4A3E 60%, #1C2120 100%)`,
+const frames = [
+  {
+    img: drumImg,
+    eyebrow: "Drumul",
+    caption: "Livrăm oriunde te duce drumul.",
+    alt: "Mașină tractând remorca cu jacuzzi-ul APUS peste un pod, pe un drum forestier din Munții Apuseni",
+    cellClass: styles.portrait,
+  },
+  {
+    img: montajImg,
+    eyebrow: "Montajul",
+    caption: "Apa la 38°C în doar 2–3 ore.",
+    alt: "Echipa APUS instalând jacuzzi-ul într-o poiană însorită, lângă pădure",
+    cellClass: styles.landscape,
+  },
+  {
+    img: searaImg,
+    eyebrow: "Seara",
+    caption: "Restul serii e al tău.",
+    alt: "Jacuzzi luminat noaptea, cu apa strălucind în întuneric",
+    cellClass: styles.landscape,
+  },
 ];
 
 export default function Gallery() {
   return (
     <section className={styles.section}>
-      <div className={styles.grid}>
-        {/* Large portrait left */}
-        <motion.div
-          className={`${styles.cell} ${styles.portrait}`}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8 }}
-        >
-          <div
-            className={styles.img}
-            style={{ background: gradients[0] }}
-          />
-        </motion.div>
+      <div className={styles.inner}>
+        <div className={styles.header}>
+          <motion.span
+            className="label"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+          >
+            În imagini
+          </motion.span>
+          <motion.h2
+            className={styles.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            Tu alegi locul. <em>Noi aducem restul.</em>
+          </motion.h2>
+        </div>
 
-        {/* Right column — two stacked */}
-        <div className={styles.stackedCol}>
-          {[1, 2].map((idx) => (
-            <motion.div
-              key={idx}
-              className={`${styles.cell} ${styles.landscape}`}
+        <div className={styles.grid}>
+          {frames.map((frame, i) => (
+            <motion.figure
+              key={frame.eyebrow}
+              className={`${styles.cell} ${frame.cellClass}`}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: idx * 0.15 }}
+              transition={{ duration: 0.8, delay: i * 0.15 }}
             >
-              <div
+              <Image
+                src={frame.img}
+                alt={frame.alt}
+                fill
+                placeholder="blur"
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.img}
-                style={{ background: gradients[idx] }}
               />
-            </motion.div>
+              <figcaption className={styles.caption}>
+                <span className={styles.eyebrow}>{frame.eyebrow}</span>
+                <span className={styles.captionLine}>{frame.caption}</span>
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
       </div>
