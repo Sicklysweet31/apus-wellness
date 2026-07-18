@@ -1,41 +1,42 @@
 # APUS Wellness & Spa — Setup & Deploy
 
-## 1. Backend formular (Google Sheets)
+## 1. Backend formular (Web3Forms)
 
-Formularul trimite lead-urile într-un Google Sheet prin `/api/contact`.
-`.env.local` conține momentan **placeholdere** — formularul nu funcționează până nu le înlocuiești.
+Formularul trimite lead-urile pe email prin `/api/contact` → Web3Forms.
+Cheia stă doar pe server (nu apare în codul din browser), iar validarea și
+protecția anti-spam (honeypot) rămân active.
 
-### Pași (o singură dată, ~10 minute)
+### Pași (o singură dată, ~2 minute)
 
-1. **Creează un Service Account**
-   - Mergi la [console.cloud.google.com](https://console.cloud.google.com) → creează un proiect (ex. `apus-wellness`).
-   - `APIs & Services` → `Library` → activează **Google Sheets API**.
-   - `IAM & Admin` → `Service Accounts` → `Create Service Account` (numele nu contează, fără roluri).
-   - Deschide contul creat → tab `Keys` → `Add Key` → `Create new key` → **JSON** → se descarcă un fișier.
+1. **Obține cheia** (dacă nu o ai deja)
+   - Mergi la [web3forms.com](https://web3forms.com), introdu adresa de email
+     unde vrei să primești rezervările, și copiază **Access Key**-ul.
 
-2. **Creează Sheet-ul de lead-uri**
-   - Creează un Google Sheet nou. Primul tab trebuie să se numească `Sheet1`.
-   - Pune pe rândul 1 antetul: `Data | Nume | Telefon | Pachet | Locație | Perioadă`.
-   - Apasă `Share` și adaugă **adresa de email a service account-ului**
-     (o găsești în JSON la `client_email`, arată ca `...@....iam.gserviceaccount.com`) cu drept de **Editor**.
-
-3. **Completează `.env.local`** (local) și aceleași variabile în hosting la deploy:
+2. **Pune cheia în `.env.local`** (local):
 
    ```
-   GOOGLE_SERVICE_ACCOUNT_EMAIL=<client_email din JSON>
-   GOOGLE_PRIVATE_KEY="<private_key din JSON, cu tot cu -----BEGIN/END PRIVATE KEY----->"
-   GOOGLE_SHEET_ID=<id-ul din URL-ul sheet-ului, între /d/ și /edit>
+   NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=<access key-ul tău>
    ```
 
-   `GOOGLE_PRIVATE_KEY` se pune între ghilimele; secvențele `\n` din JSON rămân așa cum sunt.
+   Înlocuiește `your-web3forms-access-key-here` cu cheia reală. Salvează.
+   (Cheia Web3Forms e publică prin design — se folosește direct în browser,
+   permite doar trimiterea către formularul tău, iar spam-ul e filtrat de
+   honeypot + protecția Web3Forms.)
 
-4. **Test local**: `npm run dev`, completează formularul — rândul apare în Sheet.
+3. **Repornește serverul** (`Ctrl+C` apoi `npm run dev`) — variabilele din
+   `.env.local` se citesc la pornire.
+
+4. **Test**: completează formularul de pe site — primești un email cu
+   Nume · Telefon · Pachet · Locație · Perioadă.
+
+> La deploy pe Vercel, adaugă aceeași variabilă `WEB3FORMS_ACCESS_KEY` în
+> **Settings → Environment Variables**, apoi redeploy.
 
 ## 2. Deploy (Vercel — recomandat pentru Next.js)
 
 1. Urcă proiectul pe GitHub (repo privat e suficient).
 2. [vercel.com](https://vercel.com) → `Add New Project` → importă repo-ul. Next.js e detectat automat.
-3. La `Environment Variables` adaugă cele 3 variabile de mai sus.
+3. La `Environment Variables` adaugă `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` cu cheia ta.
 4. `Deploy`. Primești un URL `*.vercel.app`.
 5. **Domeniul apuswellness.ro**: în Vercel → `Settings` → `Domains` → adaugă `apuswellness.ro`,
    apoi la registrarul domeniului setează DNS-ul indicat de Vercel (A record `76.76.21.21`

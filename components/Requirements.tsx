@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import styles from "./Requirements.module.css";
 
 const requirements = [
-  "Cale de acces plană de minim 1 metru lățime.",
+  "Cale de acces plană de minim 2,40 metri lățime.",
   "Sursă de apă și priză standard.",
   "Dacă locația este la peste 30 km de Huedin, se adaugă o taxă de transport.",
 ];

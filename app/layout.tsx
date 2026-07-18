@@ -56,7 +56,7 @@ const localBusinessSchema = {
   description:
     "Închiriere jacuzzi premium mobil cu livrare, montaj și igienizare incluse — în Huedin, Munții Apuseni și zona Cluj-Napoca.",
   telephone: "+40744244255",
-  priceRange: "800–1390 RON",
+  priceRange: "800–1290 RON",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Huedin",

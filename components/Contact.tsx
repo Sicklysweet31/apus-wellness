@@ -64,30 +64,58 @@ export default function Contact() {
     package: "",
     location: "",
     period: "",
+    company: "", // honeypot — stays empty for real users
   });
   const [formState, setFormState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    // Honeypot — a bot filled the hidden field. Fake success, send nothing.
+    if (values.company) {
+      setFormState("success");
+      setValues({ name: "", phone: "", package: "", location: "", period: "", company: "" });
+      return;
+    }
+
     setFormState("loading");
     setErrorMsg("");
 
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setErrorMsg("Formularul nu este configurat încă. Sună-ne direct.");
+      setFormState("error");
+      return;
+    }
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Rezervare nouă APUS — ${values.package}`,
+          from_name: "APUS Wellness & Spa",
+          Nume: values.name,
+          Telefon: values.phone,
+          Pachet: values.package,
+          Locație: values.location,
+          Perioadă: values.period,
+        }),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        setErrorMsg(data.error || "A apărut o eroare. Încearcă din nou.");
-        setFormState("error");
-      } else {
+      if (data.success) {
         setFormState("success");
-        setValues({ name: "", phone: "", package: "", location: "", period: "" });
+        setValues({ name: "", phone: "", package: "", location: "", period: "", company: "" });
+      } else {
+        setErrorMsg("A apărut o eroare. Încearcă din nou.");
+        setFormState("error");
       }
     } catch {
       setErrorMsg("Nu am putut trimite mesajul. Verifică conexiunea.");
@@ -152,6 +180,20 @@ export default function Contact() {
               transition={{ duration: 0.7, delay: 0.3 }}
               onSubmit={handleSubmit}
             >
+              {/* Honeypot — hidden from users, tempts bots */}
+              <input
+                type="text"
+                name="company"
+                className={styles.honeypot}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={values.company}
+                onChange={(e) =>
+                  setValues((prev) => ({ ...prev, company: e.target.value }))
+                }
+              />
+
               {fields.map((field) => (
                 <div key={field.key} className={styles.field}>
                   <label className={styles.fieldLabel} htmlFor={`contact-${field.key}`}>

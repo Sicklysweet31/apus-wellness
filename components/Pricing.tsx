@@ -52,7 +52,7 @@ const plans: {
   {
     tier: "vip",
     name: "Weekend Resort Premium",
-    price: "1.390",
+    price: "1.290",
     availability: "Vineri–Duminică/Luni · tot weekend-ul",
     topChip: "Premium",
     recommended: [
@@ -61,9 +61,7 @@ const plans: {
       "Evenimente memorabile la cabane",
     ],
     includes: [
-      "Set-up complet premium",
-      "Pachet Ambiance (Boxă premium, Lumini)",
-      "Pachet Hospitality (Frapieră cu pahare)",
+      "Tot ce conține pachetul de o zi",
       "Surpriză de bun-venit",
       "Suport non-stop",
     ],
