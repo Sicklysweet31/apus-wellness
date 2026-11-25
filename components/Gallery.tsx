@@ -6,17 +6,18 @@ import styles from "./Gallery.module.css";
 import drumImg from "@/public/images/story-drum.webp";
 import montajImg from "@/public/images/story-montaj.webp";
 import searaImg from "@/public/images/story-seara.webp";
-import searaAburImg from "@/public/images/album/seara-abur.webp";
+import searaAlbastraImg from "@/public/images/album/seara-albastra.webp";
 import cabanaToamnaImg from "@/public/images/album/cabana-toamna.webp";
 import drumMunteImg from "@/public/images/album/drum-munte.webp";
-import searaBraziImg from "@/public/images/album/seara-brazi.webp";
+import varaCampImg from "@/public/images/album/vara-camp.webp";
 import sosireCabanaImg from "@/public/images/album/sosire-cabana.webp";
 import searaAurieImg from "@/public/images/album/seara-aurie.webp";
 import artarRosuImg from "@/public/images/album/artar-rosu.webp";
-import apusPergolaImg from "@/public/images/album/apus-pergola.webp";
+import searaBraziImg from "@/public/images/album/seara-brazi.webp";
 import buleUmbrelaImg from "@/public/images/album/bule-umbrela.webp";
-import drumPlatouImg from "@/public/images/album/drum-platou.webp";
-import jeturiMesteceniImg from "@/public/images/album/jeturi-mesteceni.webp";
+import apusPergolaImg from "@/public/images/album/apus-pergola.webp";
+import searaFelinarImg from "@/public/images/album/seara-felinar.webp";
+import varaBuleImg from "@/public/images/album/vara-bule.webp";
 
 const frames = [
   {
@@ -43,12 +44,12 @@ const frames = [
 ];
 
 // Real photos from the APUS album (apus-album/inbox): no faces, plates blurred.
-// The order fills a 3-column, 5-row grid on desktop (portraits span two rows):
-// keep 4 portraits in slots 1, 4, 7 and 8, or the grid leaves holes.
+// The order fills a 3-column, 6-row grid on desktop (portraits span two rows):
+// keep portraits in slots 1, 4, 7, 8, 10 and 11, or the grid leaves holes.
 const album = [
   {
-    img: searaAburImg,
-    alt: "Jacuzzi luminat la ora albastră, cu abur peste apă, în curtea unei pensiuni, cu turla bisericii din sat luminată în spate",
+    img: searaAlbastraImg,
+    alt: "Jacuzzi cu apa albastră și abur la ora albastră, în curtea unei pensiuni, cu turla bisericii din sat luminată în spate",
     shape: "portrait",
   },
   {
@@ -62,8 +63,8 @@ const album = [
     shape: "landscape",
   },
   {
-    img: searaBraziImg,
-    alt: "Jacuzzi cu apa portocalie noaptea, sub brazi înalți",
+    img: varaCampImg,
+    alt: "Jacuzzi cu apa albastră și jeturile pornite, vara, cu un gard de tuia și dealuri întinse în spate",
     shape: "portrait",
   },
   {
@@ -78,12 +79,12 @@ const album = [
   },
   {
     img: artarRosuImg,
-    alt: "Remorca cu jacuzzi-ul văzută printre frunze roșii de arțar japonez",
+    alt: "Remorca cu jacuzzi-ul în curtea unei vile, cu câteva frunze roșii de arțar în prim-plan",
     shape: "portrait",
   },
   {
-    img: apusPergolaImg,
-    alt: "Jacuzzi cu apa limpede sub o pergolă de lemn, la apus",
+    img: searaBraziImg,
+    alt: "Jacuzzi cu apa portocalie noaptea, sub brazi înalți",
     shape: "portrait",
   },
   {
@@ -92,13 +93,18 @@ const album = [
     shape: "landscape",
   },
   {
-    img: drumPlatouImg,
-    alt: "Remorca cu jacuzzi-ul și Land Rover-ul pe platou, cu munții la orizont",
-    shape: "landscape",
+    img: apusPergolaImg,
+    alt: "Jacuzzi cu apa limpede sub o pergolă de lemn, la apus",
+    shape: "portrait",
   },
   {
-    img: jeturiMesteceniImg,
-    alt: "Jacuzzi cu jeturile pornite sub umbrelă, lângă cabană, cu mesteceni aurii",
+    img: searaFelinarImg,
+    alt: "Jacuzzi luminat albastru la căderea serii, cu un copac desfrunzit și un felinar de stradă în sat",
+    shape: "portrait",
+  },
+  {
+    img: varaBuleImg,
+    alt: "Apa cu bule în jacuzzi, vara, cu tuia și câmpul întins în spate",
     shape: "landscape",
   },
 ] as const;
