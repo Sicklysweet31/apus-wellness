@@ -6,13 +6,17 @@ import styles from "./Gallery.module.css";
 import drumImg from "@/public/images/story-drum.webp";
 import montajImg from "@/public/images/story-montaj.webp";
 import searaImg from "@/public/images/story-seara.webp";
-import searaAurieImg from "@/public/images/album/seara-aurie.webp";
+import searaAburImg from "@/public/images/album/seara-abur.webp";
+import cabanaToamnaImg from "@/public/images/album/cabana-toamna.webp";
 import drumMunteImg from "@/public/images/album/drum-munte.webp";
-import apusPergolaImg from "@/public/images/album/apus-pergola.webp";
 import searaBraziImg from "@/public/images/album/seara-brazi.webp";
+import sosireCabanaImg from "@/public/images/album/sosire-cabana.webp";
+import searaAurieImg from "@/public/images/album/seara-aurie.webp";
+import artarRosuImg from "@/public/images/album/artar-rosu.webp";
+import apusPergolaImg from "@/public/images/album/apus-pergola.webp";
+import buleUmbrelaImg from "@/public/images/album/bule-umbrela.webp";
 import drumPlatouImg from "@/public/images/album/drum-platou.webp";
-import searaFoisorImg from "@/public/images/album/seara-foisor.webp";
-import ziMesteceniImg from "@/public/images/album/zi-mesteceni.webp";
+import jeturiMesteceniImg from "@/public/images/album/jeturi-mesteceni.webp";
 
 const frames = [
   {
@@ -38,12 +42,18 @@ const frames = [
   },
 ];
 
-// Real photos from the APUS album (apus-album/inbox), no faces, plates blurred.
-// The order fills a 3-column grid on desktop: portraits span two rows.
+// Real photos from the APUS album (apus-album/inbox): no faces, plates blurred.
+// The order fills a 3-column, 5-row grid on desktop (portraits span two rows):
+// keep 4 portraits in slots 1, 4, 7 and 8, or the grid leaves holes.
 const album = [
   {
-    img: searaAurieImg,
-    alt: "Jacuzzi-ul APUS noaptea, cu apa luminată în auriu și roz",
+    img: searaAburImg,
+    alt: "Jacuzzi luminat la ora albastră, cu abur peste apă, în curtea unei pensiuni, cu turla bisericii din sat luminată în spate",
+    shape: "portrait",
+  },
+  {
+    img: cabanaToamnaImg,
+    alt: "Jacuzzi deschis cu jeturile pornite în fața unei cabane, între mesteceni aurii, toamna",
     shape: "landscape",
   },
   {
@@ -52,28 +62,43 @@ const album = [
     shape: "landscape",
   },
   {
-    img: apusPergolaImg,
-    alt: "Jacuzzi cu apa limpede sub o pergolă de lemn, la apus",
-    shape: "portrait",
-  },
-  {
     img: searaBraziImg,
     alt: "Jacuzzi cu apa portocalie noaptea, sub brazi înalți",
     shape: "portrait",
   },
   {
+    img: sosireCabanaImg,
+    alt: "Land Rover-ul și remorca cu jacuzzi-ul, ajunse pe gazonul din fața cabanei",
+    shape: "landscape",
+  },
+  {
+    img: searaAurieImg,
+    alt: "Jacuzzi-ul noaptea, cu apa luminată în auriu și roz",
+    shape: "landscape",
+  },
+  {
+    img: artarRosuImg,
+    alt: "Remorca cu jacuzzi-ul văzută printre frunze roșii de arțar japonez",
+    shape: "portrait",
+  },
+  {
+    img: apusPergolaImg,
+    alt: "Jacuzzi cu apa limpede sub o pergolă de lemn, la apus",
+    shape: "portrait",
+  },
+  {
+    img: buleUmbrelaImg,
+    alt: "Apa cu bule în jacuzzi, sub umbrelă, cu pridvorul cabanei și copaci aurii în spate",
+    shape: "landscape",
+  },
+  {
     img: drumPlatouImg,
-    alt: "Land Rover-ul și remorca cu jacuzzi-ul pe un drum de platou, între molizi",
+    alt: "Remorca cu jacuzzi-ul și Land Rover-ul pe platou, cu munții la orizont",
     shape: "landscape",
   },
   {
-    img: searaFoisorImg,
-    alt: "Jacuzzi cu apa galbenă noaptea, lângă un foișor, cu brazi în spate",
-    shape: "landscape",
-  },
-  {
-    img: ziMesteceniImg,
-    alt: "Jacuzzi deschis lângă un gard de lemn, între mesteceni, într-o zi însorită de toamnă",
+    img: jeturiMesteceniImg,
+    alt: "Jacuzzi cu jeturile pornite sub umbrelă, lângă cabană, cu mesteceni aurii",
     shape: "landscape",
   },
 ] as const;
