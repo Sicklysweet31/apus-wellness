@@ -34,7 +34,10 @@ export const metadata: Metadata = {
     "APUS Wellness & Spa",
   ],
   alternates: { canonical: "/" },
-  verification: { google: "WWPY2aJ4TDym79Yy4aeThYCz7he14eccqL7zJY4ipIo" }, // Google Search Console
+  // Google Search Console: the APUS account's tag, plus the one Mark sent first (another account)
+  verification: {
+    google: ["FXMwMZe8Lcj1vNiHMc9E2XtBXpI5HsFW-5r0ysGFvVg", "WWPY2aJ4TDym79Yy4aeThYCz7he14eccqL7zJY4ipIo"],
+  },
   openGraph: {
     title: "APUS Wellness & Spa — Apusul, adus la tine.",
     description:
