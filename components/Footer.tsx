@@ -14,13 +14,13 @@ export default function Footer() {
         {/* Right col */}
         <div className={styles.colRight}>
           <nav className={styles.footerNav}>
-            {["#servicii", "#experienta", "#preturi", "#contact"].map((href, i) => (
+            {["#servicii", "#preturi", "#contact"].map((href, i) => (
               <a
                 key={href}
                 href={href}
                 className={styles.navLink}
               >
-                {["Servicii", "Experiență", "Prețuri", "Contact"][i]}
+                {["Servicii", "Prețuri", "Contact"][i]}
               </a>
             ))}
           </nav>

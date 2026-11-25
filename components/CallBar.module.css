@@ -1,0 +1,29 @@
+.bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* z-index 90 keeps the bar under the mobile menu overlay (99) */
+  .bar {
+    display: flex;
+    gap: 0.5rem;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    padding: 0.625rem 1rem calc(0.625rem + env(safe-area-inset-bottom));
+    background: rgba(28, 33, 32, 0.94);
+    border-top: 1px solid rgba(196, 135, 58, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .btn {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    padding: 0.95rem 0.5rem;
+    letter-spacing: 0.2em;
+  }
+}

@@ -26,8 +26,8 @@ const plans: {
       "O aniversare intimă în timpul săptămânii",
     ],
     includes: [
-      "Jacuzzi Pelican Bay 8 pers.",
-      "Încălzire rapidă GPL 35kW",
+      "Jacuzzi Pelican Bay, 9 persoane",
+      "Încălzire cu GPL, fără lemne",
       "Igienizare clinică",
       "Montaj Zero Efort",
     ],
@@ -62,7 +62,6 @@ const plans: {
     ],
     includes: [
       "Tot ce conține pachetul de o zi",
-      "Surpriză de bun-venit",
       "Suport non-stop",
     ],
   },

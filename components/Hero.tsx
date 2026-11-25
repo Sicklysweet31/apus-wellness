@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import styles from "./Hero.module.css";
 import heroImg from "@/public/images/hero.jpg";
+import { CALL_HREF, WHATSAPP_HREF } from "@/lib/contact";
 
 const badges = [
   {
@@ -52,7 +53,7 @@ export default function Hero() {
       <div ref={bgRef} className={styles.bg}>
         <Image
           src={heroImg}
-          alt="Jacuzzi premium APUS instalat într-o poiană din Munții Apuseni, înconjurat de brazi"
+          alt="Jacuzzi-ul APUS acoperit, pe remorcă, între brazi"
           fill
           priority
           placeholder="blur"
@@ -94,20 +95,25 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
         >
           Livrăm experiența supremă de relaxare direct la ușa sau cabana ta.
-          Jacuzzi premium de 8 persoane, cu apă la 38°C gata în doar 2–3 ore.
+          Jacuzzi premium de 9 persoane, cu apă la 38°C.
           Fără logistică complicată, fără efort din partea ta. Tu pui la
           dispoziție locația, noi aducem luxul.
         </motion.p>
 
-        <motion.a
-          href="#contact"
-          className={`btn-outline-gold ${styles.cta}`}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.35, ease: "easeOut" }}
-        >
-          Rezervă Experiența
-        </motion.a>
+        {/* Plain links, no motion: visible at first paint, even on slow 4G */}
+        <div className={styles.actions}>
+          <a href={CALL_HREF} className="btn-filled-gold">
+            Sunați-ne
+          </a>
+          <a
+            href={WHATSAPP_HREF}
+            className="btn-outline-gold"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Scrieți pe WhatsApp
+          </a>
+        </div>
 
         <motion.ul
           className={styles.badges}

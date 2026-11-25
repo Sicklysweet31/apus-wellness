@@ -166,4 +166,9 @@ button {
     --heading-hero: 14vw;
     --heading-display: 10vw;
   }
+
+  /* room for the call bar fixed to the bottom (components/CallBar), so it never covers the footer */
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
 }

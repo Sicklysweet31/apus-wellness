@@ -18,7 +18,7 @@ const frames = [
   {
     img: montajImg,
     eyebrow: "Montajul",
-    caption: "Apa la 38°C în doar 2–3 ore.",
+    caption: "Apa la 38°, fără lemne și fără foc.",
     alt: "Echipa APUS instalând jacuzzi-ul într-o poiană însorită, lângă pădure",
     cellClass: styles.landscape,
   },

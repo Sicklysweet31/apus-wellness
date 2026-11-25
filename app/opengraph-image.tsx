@@ -47,7 +47,7 @@ export default function OpenGraphImage() {
             marginTop: 40,
           }}
         >
-          Jacuzzi premium · 38°C în 2–3 ore · Munții Apuseni
+          Jacuzzi de 9 persoane · apă la 38° · zona Huedin
         </div>
       </div>
     ),

@@ -11,8 +11,8 @@ const cards = [
   },
   {
     number: "02",
-    title: "Montaj Ultra-Rapid",
-    body: "Spre deosebire de ciubărele clasice care se încălzesc greu, arzătorul nostru GPL de 35kW aduce apa la 38°C în doar 2–3 ore. Montajul este 100% sigur pentru proprietatea ta.",
+    title: "Montăm și încălzim",
+    body: "Nu e un ciubăr pe lemne: e jacuzzi cu GPL, adus, umplut și încălzit de noi. Apa ajunge la 38°. Iarna, încălzirea durează 3–4 ore, așa că venim din timp.",
   },
   {
     number: "03",

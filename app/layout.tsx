@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   icons: { icon: "/icon.svg" },
   title: "APUS Wellness & Spa — Jacuzzi Premium Livrat la Locația Ta | Munții Apuseni",
   description:
-    "Livrăm jacuzzi premium de 8 persoane direct la ușa sau cabana ta — apă la 38°C în 2–3 ore cu încălzire GPL, igienizare clinică, montaj zero efort. Huedin · Cluj · Munții Apuseni.",
+    "Jacuzzi de 9 persoane, adus la casa sau cabana voastră din zona Huedin. Nu e un ciubăr pe lemne: noi livrăm, montăm, umplem cu apă și încălzim.",
   keywords: [
     "jacuzzi mobil",
     "închiriere jacuzzi Cluj",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "APUS Wellness & Spa — Apusul, adus la tine.",
     description:
-      "Jacuzzi premium de 8 persoane, livrat oriunde în Munții Apuseni. Apă la 38°C în 2–3 ore. Tu alegi locul. Noi aducem luxul.",
+      "Jacuzzi de 9 persoane, adus la casa sau cabana voastră din zona Huedin. Nu e un ciubăr pe lemne: noi livrăm, montăm, umplem cu apă și încălzim.",
     url: "https://apuswellness.ro",
     siteName: "APUS Wellness & Spa",
     locale: "ro_RO",

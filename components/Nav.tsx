@@ -24,7 +24,6 @@ export default function Nav() {
         </a>
         <ul className={styles.links}>
           <li><a href="#servicii" className={styles.link}>Servicii</a></li>
-          <li><a href="#experienta" className={styles.link}>Experiență</a></li>
           <li><a href="#preturi" className={styles.link}>Prețuri</a></li>
           <li><a href="#contact" className={styles.link}>Contact</a></li>
         </ul>
@@ -46,7 +45,6 @@ export default function Nav() {
         </div>
         <ul className={styles.overlayLinks}>
           <li><a href="#servicii" className={styles.overlayLink} onClick={closeMenu}>Servicii</a></li>
-          <li><a href="#experienta" className={styles.overlayLink} onClick={closeMenu}>Experiență</a></li>
           <li><a href="#preturi" className={styles.overlayLink} onClick={closeMenu}>Prețuri</a></li>
           <li><a href="#contact" className={styles.overlayLink} onClick={closeMenu}>Contact</a></li>
         </ul>
