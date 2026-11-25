@@ -49,7 +49,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} data-place="hero">
       <div ref={bgRef} className={styles.bg}>
         <Image
           src={heroImg}

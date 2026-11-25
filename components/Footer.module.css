@@ -95,6 +95,26 @@
   justify-content: center;
 }
 
+.legal {
+  display: flex;
+  gap: var(--space-medium);
+  margin-left: var(--space-xl);
+}
+
+.legalLink {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--color-warm-stone);
+  transition: color var(--transition-base);
+}
+
+.legalLink:hover,
+.legalLink:focus-visible {
+  color: var(--color-sunset-gold);
+}
+
 .copy {
   font-family: var(--font-sans);
   font-weight: 300;
@@ -108,4 +128,5 @@
   .colRight { align-items: flex-start; }
   .footerNav { justify-content: flex-start; }
   .bottom { padding: 1.25rem var(--space-medium); flex-direction: column; gap: 0.75rem; }
+  .legal { margin-left: 0; }
 }

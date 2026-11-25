@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
+import Measure from "@/components/Measure";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
     "APUS Wellness & Spa",
   ],
   alternates: { canonical: "/" },
+  verification: { google: "WWPY2aJ4TDym79Yy4aeThYCz7he14eccqL7zJY4ipIo" }, // Google Search Console
   openGraph: {
     title: "APUS Wellness & Spa — Apusul, adus la tine.",
     description:
@@ -79,6 +81,7 @@ export default function RootLayout({
     <html lang="ro" className={`${serif.variable} ${sans.variable}`}>
       <body>
         {children}
+        <Measure />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

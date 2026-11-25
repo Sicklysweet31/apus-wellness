@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Contact.module.css";
 import { WHATSAPP_HREF } from "@/lib/contact";
+import { track } from "@/lib/clarity";
 
 const contacts = [
   { name: "Mark", number: "+40 744 244 255", tel: "tel:+40744244255" },
@@ -113,6 +114,7 @@ export default function Contact() {
 
       if (data.success) {
         setFormState("success");
+        track("formular_trimis");
         setValues({ name: "", phone: "", package: "", location: "", period: "", company: "" });
       } else {
         setErrorMsg("A apărut o eroare. Încearcă din nou.");
@@ -125,7 +127,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className={styles.section}>
+    <section id="contact" className={styles.section} data-place="contact">
       <div className={styles.inner}>
         <motion.span
           className="label"
@@ -175,6 +177,7 @@ export default function Contact() {
             <motion.form
               key="form"
               className={styles.form}
+              data-clarity-mask="true"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}

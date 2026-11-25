@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Logo from "./Logo";
 import styles from "./Footer.module.css";
+import CookieButton from "./CookieButton";
 
 export default function Footer() {
   return (
@@ -30,6 +32,12 @@ export default function Footer() {
       <div className={styles.bottom}>
         <span className={styles.copy}>
           © {new Date().getFullYear()} APUS Wellness & Spa · Munții Apuseni, România
+        </span>
+        <span className={styles.legal}>
+          <Link href="/confidentialitate" className={styles.legalLink}>
+            Confidențialitate
+          </Link>
+          <CookieButton className={styles.legalLink} />
         </span>
       </div>
     </footer>

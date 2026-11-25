@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent, type TouchEv
 import Image, { type StaticImageData } from "next/image";
 import { motion, MotionConfig } from "framer-motion";
 import styles from "./Gallery.module.css";
+import { track } from "@/lib/clarity";
 import drumPadureImg from "@/public/images/story-drum.webp";
 import searaAlbastraImg from "@/public/images/album/seara-albastra.webp";
 import cabanaToamnaImg from "@/public/images/album/cabana-toamna.webp";
@@ -141,6 +142,7 @@ export default function Gallery() {
   const open = (index: number) => (e: MouseEvent<HTMLButtonElement>) => {
     opener.current = e.currentTarget;
     setCurrent(index);
+    track("galerie_poza");
   };
 
   const step = useCallback(
