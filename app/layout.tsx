@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Measure from "@/components/Measure";
+import { GOOGLE_PROFILE_URL } from "@/components/reviews";
 
 const serif = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -21,7 +22,7 @@ const sans = Jost({
 export const metadata: Metadata = {
   metadataBase: new URL("https://apuswellness.ro"),
   icons: { icon: "/icon.svg" },
-  title: "APUS Wellness & Spa — Jacuzzi Premium Livrat la Locația Ta | Munții Apuseni",
+  title: "Jacuzzi de închiriat, Huedin (Cluj) | APUS Wellness",
   description:
     "Jacuzzi de 9 persoane, adus la casa sau cabana voastră din zona Huedin. Nu e un ciubăr pe lemne: noi livrăm, montăm, umplem cu apă și încălzim.",
   keywords: [
@@ -59,7 +60,7 @@ const localBusinessSchema = {
   name: "APUS Wellness & Spa",
   url: "https://apuswellness.ro",
   description:
-    "Închiriere jacuzzi premium mobil cu livrare, montaj și igienizare incluse — în Huedin, Munții Apuseni și zona Cluj-Napoca.",
+    "Închiriere jacuzzi mobil de 9 persoane în zona Huedin, jud. Cluj: noi livrăm, montăm, umplem cu apă și încălzim cu GPL.",
   telephone: "+40744244255",
   priceRange: "800–1290 RON",
   address: {
@@ -68,9 +69,16 @@ const localBusinessSchema = {
     addressRegion: "Cluj",
     addressCountry: "RO",
   },
+  hasMap: GOOGLE_PROFILE_URL,
+  sameAs: [
+    "https://instagram.com/apuswellness",
+    "https://facebook.com/apuswellness",
+    GOOGLE_PROFILE_URL,
+  ],
+  image: "https://apuswellness.ro/opengraph-image",
   areaServed: [
     { "@type": "City", name: "Huedin" },
-    { "@type": "City", name: "Cluj-Napoca" },
+    { "@type": "AdministrativeArea", name: "Județul Cluj" },
     { "@type": "Place", name: "Munții Apuseni" },
   ],
 };

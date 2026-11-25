@@ -37,25 +37,25 @@ type Chapter = {
 const chapters: Chapter[] = [
   {
     numeral: "I",
-    title: "Drumul",
-    line: "Livrăm oriunde te duce drumul.",
+    title: "Seara",
+    line: "Restul serii e al vostru.",
     shape: "portrait",
     lead: {
-      img: artarRosuImg,
-      alt: "Remorca cu jacuzzi-ul în curtea unei vile, cu câteva frunze roșii de arțar în prim-plan",
+      img: searaAlbastraImg,
+      alt: "Jacuzzi cu apa albastră și abur la ora albastră, în curtea unei pensiuni, cu turla bisericii din sat luminată în spate",
     },
     rest: [
       {
-        img: drumMunteImg,
-        alt: "Land Rover-ul tractând remorca cu jacuzzi-ul pe un drum de țară, cu lan de porumb și munți în spate",
+        img: apusPergolaImg,
+        alt: "Jacuzzi cu apa limpede sub o pergolă de lemn, la apus",
       },
       {
-        img: sosireCabanaImg,
-        alt: "Land Rover-ul și remorca cu jacuzzi-ul, ajunse pe gazonul din fața cabanei",
+        img: searaFelinarImg,
+        alt: "Jacuzzi luminat albastru la căderea serii, cu un copac desfrunzit și un felinar de stradă în sat",
       },
       {
-        img: drumPadureImg,
-        alt: "Mașină tractând remorca cu jacuzzi-ul APUS peste un pod, pe un drum forestier din Munții Apuseni",
+        img: searaBraziImg,
+        alt: "Jacuzzi cu apa portocalie noaptea, sub brazi înalți",
       },
     ],
   },
@@ -85,25 +85,25 @@ const chapters: Chapter[] = [
   },
   {
     numeral: "III",
-    title: "Seara",
-    line: "Restul serii e al tău.",
+    title: "Drumul",
+    line: "Livrăm oriunde vă duce drumul.",
     shape: "portrait",
     lead: {
-      img: searaAlbastraImg,
-      alt: "Jacuzzi cu apa albastră și abur la ora albastră, în curtea unei pensiuni, cu turla bisericii din sat luminată în spate",
+      img: artarRosuImg,
+      alt: "Remorca cu jacuzzi-ul în curtea unei vile, cu câteva frunze roșii de arțar în prim-plan",
     },
     rest: [
       {
-        img: apusPergolaImg,
-        alt: "Jacuzzi cu apa limpede sub o pergolă de lemn, la apus",
+        img: drumMunteImg,
+        alt: "Land Rover-ul tractând remorca cu jacuzzi-ul pe un drum de țară, cu lan de porumb și munți în spate",
       },
       {
-        img: searaFelinarImg,
-        alt: "Jacuzzi luminat albastru la căderea serii, cu un copac desfrunzit și un felinar de stradă în sat",
+        img: sosireCabanaImg,
+        alt: "Land Rover-ul și remorca cu jacuzzi-ul, ajunse pe gazonul din fața cabanei",
       },
       {
-        img: searaBraziImg,
-        alt: "Jacuzzi cu apa portocalie noaptea, sub brazi înalți",
+        img: drumPadureImg,
+        alt: "Mașină tractând remorca cu jacuzzi-ul APUS peste un pod, pe un drum forestier din Munții Apuseni",
       },
     ],
   },
@@ -200,7 +200,7 @@ export default function Gallery() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7, delay: 0.1 }}
             >
-              Tu alegi locul. <em>Noi aducem restul.</em>
+              Voi alegeți locul. <em>Noi aducem restul.</em>
             </motion.h2>
           </div>
 

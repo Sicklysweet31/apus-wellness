@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import styles from "./Pricing.module.css";
+import { whatsappWith } from "@/lib/contact";
 
 type Tier = "mat" | "featured" | "vip";
 
@@ -14,56 +15,49 @@ const plans: {
   includes: string[];
   badge?: string;
   topChip?: string;
+  ask: string;
 }[] = [
   {
-    tier: "mat",
-    name: "One-Day Escape",
-    price: "800",
-    availability: "Exclusiv Luni–Joi · 24 ore",
-    recommended: [
-      "O surpriză romantică în cuplu",
-      "O seară de deconectare după birou",
-      "O aniversare intimă în timpul săptămânii",
-    ],
-    includes: [
-      "Jacuzzi Pelican Bay, 9 persoane",
-      "Încălzire cu GPL, fără lemne",
-      "Igienizare clinică",
-      "Montaj Zero Efort",
-    ],
-  },
-  {
     tier: "featured",
-    name: "Mid-Week Retreat",
-    price: "990",
-    availability: "Exclusiv Luni–Joi · 4 Zile / 3 Nopți",
-    topChip: "★ Best Value",
+    name: "Weekendul întreg",
+    price: "1.290",
+    availability: "Vineri–duminică sau luni",
+    topChip: "Premium",
+    badge: "Sub 145 lei de persoană dacă sunteți 9",
     recommended: [
-      "Deconectare zilnică după muncă",
-      "Profesioniști remote (Work from Home & Spa)",
-      "Familii sau grupuri care caută relaxare prelungită la munte",
+      "Ziua cuiva drag, cu toți prietenii",
+      "Un weekend cu prietenii, acasă sau la cabană",
+      "Sărbătorile acasă",
     ],
     includes: [
-      "Tot ce conține pachetul de o zi",
-      "Kit simplu de menținere a apei",
+      "Jacuzzi de 9 persoane, cu jeturi și lumini",
+      "Încălzire cu GPL, fără lemne și fără foc",
+      "Apă nouă, umplută la voi",
+      "Livrare, montaj și strângere",
     ],
-    badge: "Adaugi doar 190 lei pentru încă 3 zile complete de relaxare!",
+    ask: "Am văzut site-ul. Vreau weekendul întreg. Este liber pe data de ",
   },
   {
-    tier: "vip",
-    name: "Weekend Resort Premium",
-    price: "1.290",
-    availability: "Vineri–Duminică/Luni · tot weekend-ul",
-    topChip: "Premium",
+    tier: "mat",
+    name: "Patru zile, de luni până joi",
+    price: "990",
+    availability: "Luni–joi · 4 zile",
+    badge: "Cu 190 lei mai mult decât o seară, îl aveți patru zile.",
+    recommended: ["Serile de după muncă, cu familia"],
+    includes: ["Tot ce are weekendul"],
+    ask: "Am văzut site-ul. Vreau patru zile, de luni până joi. Sunt libere zilele de ",
+  },
+  {
+    tier: "mat",
+    name: "O seară în timpul săptămânii",
+    price: "800",
+    availability: "Luni–joi · 24 de ore",
     recommended: [
-      "Petreceri private",
-      "Aniversări cu mulți invitați",
-      "Evenimente memorabile la cabane",
+      "O surpriză în doi",
+      "O zi de naștere în mijlocul săptămânii",
     ],
-    includes: [
-      "Tot ce conține pachetul de o zi",
-      "Suport non-stop",
-    ],
+    includes: ["Tot ce are weekendul"],
+    ask: "Am văzut site-ul. Vreau o seară în timpul săptămânii, pe data de ",
   },
 ];
 
@@ -75,7 +69,7 @@ const tierClass: Record<Tier, string> = {
 
 export default function Pricing() {
   return (
-    <section id="preturi" className={styles.section}>
+    <section id="preturi" className={styles.section} data-place="preturi">
       <div className={styles.inner}>
         <div className={styles.header}>
           <motion.span
@@ -96,6 +90,16 @@ export default function Pricing() {
           >
             Prețuri clare, fără surprize.
           </motion.h2>
+          <motion.p
+            className={styles.includesAll}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Prețul include livrarea, montajul, încălzirea cu GPL și strângerea,
+            până la 30 km de Huedin.
+          </motion.p>
         </div>
 
         <div className={styles.cards}>
@@ -154,12 +158,14 @@ export default function Pricing() {
               </div>
 
               <a
-                href="#contact"
+                href={whatsappWith(plan.ask)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${
                   plan.tier === "featured" ? "btn-filled-gold" : "btn-outline-gold"
                 } ${styles.btn}`}
               >
-                Rezervă Pachetul
+                Întrebați de o dată
               </a>
             </motion.div>
           ))}
@@ -172,7 +178,6 @@ export default function Pricing() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Toate pachetele includ livrare, montaj, igienizare și colectare.
           Pentru locații la peste 30 km de Huedin se adaugă o taxă de transport.
         </motion.p>
       </div>

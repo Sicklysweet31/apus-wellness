@@ -79,8 +79,8 @@ export default function Measure() {
       {asking && (
         <div className={styles.banner} role="region" aria-label="Cookie-uri">
           <p className={styles.text}>
-            Folosim cookie-uri ca să vedem cum e folosit site-ul și să-l facem mai bun. Le pornim
-            doar dacă ești de acord.{" "}
+            Folosim cookie-uri ca să vedem cum e folosit site-ul. Le pornim doar
+            dacă sunteți de acord.{" "}
             <Link href="/confidentialitate" className={styles.more}>
               Detalii
             </Link>

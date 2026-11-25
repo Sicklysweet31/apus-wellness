@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Contact.module.css";
-import { WHATSAPP_HREF } from "@/lib/contact";
+import { CALL_HREF, WHATSAPP_HREF } from "@/lib/contact";
 import { track } from "@/lib/clarity";
 
 const contacts = [
@@ -43,18 +43,11 @@ const socials = [
   },
 ];
 
-const packages = [
-  "One-Day Escape",
-  "Mid-Week Retreat",
-  "Weekend Resort Premium",
-];
-
 const fields = [
-  { key: "name", label: "Nume și Prenume", type: "text", placeholder: "Numele complet" },
+  { key: "name", label: "Nume", type: "text", placeholder: "Numele vostru" },
   { key: "phone", label: "Telefon (WhatsApp)", type: "tel", placeholder: "+40 7XX XXX XXX" },
-  { key: "package", label: "Pachetul Dorit", type: "select", placeholder: "Alege pachetul" },
-  { key: "location", label: "Locația Evenimentului (Comuna/Localitatea)", type: "text", placeholder: "Mărișel, Cluj" },
-  { key: "period", label: "Perioada dorită", type: "text", placeholder: "12–14 Iulie" },
+  { key: "location", label: "Localitatea", type: "text", placeholder: "ex. Mărișel" },
+  { key: "period", label: "Data dorită", type: "text", placeholder: "ex. 11–13 decembrie" },
 ];
 
 type FormState = "idle" | "loading" | "success" | "error";
@@ -63,7 +56,6 @@ export default function Contact() {
   const [values, setValues] = useState({
     name: "",
     phone: "",
-    package: "",
     location: "",
     period: "",
     company: "", // honeypot — stays empty for real users
@@ -77,7 +69,7 @@ export default function Contact() {
     // Honeypot — a bot filled the hidden field. Fake success, send nothing.
     if (values.company) {
       setFormState("success");
-      setValues({ name: "", phone: "", package: "", location: "", period: "", company: "" });
+      setValues({ name: "", phone: "", location: "", period: "", company: "" });
       return;
     }
 
@@ -86,7 +78,7 @@ export default function Contact() {
 
     const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
     if (!accessKey) {
-      setErrorMsg("Formularul nu este configurat încă. Sună-ne direct.");
+      setErrorMsg("Formularul nu este configurat încă. Sunați-ne direct.");
       setFormState("error");
       return;
     }
@@ -100,11 +92,10 @@ export default function Contact() {
         },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: `Rezervare nouă APUS — ${values.package}`,
+          subject: `Rezervare nouă APUS — ${values.period}`,
           from_name: "APUS Wellness & Spa",
           Nume: values.name,
           Telefon: values.phone,
-          Pachet: values.package,
           Locație: values.location,
           Perioadă: values.period,
         }),
@@ -115,13 +106,13 @@ export default function Contact() {
       if (data.success) {
         setFormState("success");
         track("formular_trimis");
-        setValues({ name: "", phone: "", package: "", location: "", period: "", company: "" });
+        setValues({ name: "", phone: "", location: "", period: "", company: "" });
       } else {
-        setErrorMsg("A apărut o eroare. Încearcă din nou.");
+        setErrorMsg("A apărut o eroare. Încercați din nou.");
         setFormState("error");
       }
     } catch {
-      setErrorMsg("Nu am putut trimite mesajul. Verifică conexiunea.");
+      setErrorMsg("Nu am putut trimite mesajul. Verificați conexiunea.");
       setFormState("error");
     }
   }
@@ -147,7 +138,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          Spune-ne despre seara ta.
+          Spuneți-ne despre seara voastră.
         </motion.h2>
 
         <motion.p
@@ -157,9 +148,25 @@ export default function Contact() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Pachet. Locație. Perioadă. Atât.
-          <br />Noi facem restul.
+          Ne trebuie doar data și locul.
+          <br />Restul facem noi.
         </motion.p>
+
+        <div className={styles.direct}>
+          <a href={CALL_HREF} className="btn-filled-gold">
+            Sunați-ne
+          </a>
+          <a
+            href={WHATSAPP_HREF}
+            className="btn-outline-gold"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Scrieți pe WhatsApp
+          </a>
+        </div>
+
+        <p className={styles.orForm}>Sau lăsați-ne datele și vă sunăm noi:</p>
 
         <AnimatePresence mode="wait">
           {formState === "success" ? (
@@ -171,7 +178,7 @@ export default function Contact() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span>Mulțumim! Vă vom contacta în curând.</span>
+              <span>Mulțumim. Vă sunăm noi.</span>
             </motion.div>
           ) : (
             <motion.form
@@ -203,42 +210,18 @@ export default function Contact() {
                   <label className={styles.fieldLabel} htmlFor={`contact-${field.key}`}>
                     {field.label}
                   </label>
-                  {field.type === "select" ? (
-                    <select
-                      id={`contact-${field.key}`}
-                      className={`${styles.input} ${styles.select} ${
-                        values.package === "" ? styles.selectEmpty : ""
-                      }`}
-                      value={values.package}
-                      onChange={(e) =>
-                        setValues((prev) => ({ ...prev, package: e.target.value }))
-                      }
-                      required
-                      disabled={formState === "loading"}
-                    >
-                      <option value="" disabled>
-                        {field.placeholder}
-                      </option>
-                      {packages.map((p) => (
-                        <option key={p} value={p}>
-                          {p}
-                        </option>
-                      ))}
-                    </select>
-                  ) : (
-                    <input
-                      id={`contact-${field.key}`}
-                      type={field.type}
-                      placeholder={field.placeholder}
-                      className={styles.input}
-                      value={values[field.key as keyof typeof values]}
-                      onChange={(e) =>
-                        setValues((prev) => ({ ...prev, [field.key]: e.target.value }))
-                      }
-                      required
-                      disabled={formState === "loading"}
-                    />
-                  )}
+                  <input
+                    id={`contact-${field.key}`}
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    className={styles.input}
+                    value={values[field.key as keyof typeof values]}
+                    onChange={(e) =>
+                      setValues((prev) => ({ ...prev, [field.key]: e.target.value }))
+                    }
+                    required
+                    disabled={formState === "loading"}
+                  />
                 </div>
               ))}
 
@@ -255,8 +238,7 @@ export default function Contact() {
               </button>
 
               <p className={styles.microCopy}>
-                Te vom contacta în cel mai scurt timp pentru a confirma
-                disponibilitatea echipamentului și detaliile logistice de acces.
+                Vă sunăm ca să vă spunem dacă data e liberă și ce trebuie pregătit.
               </p>
             </motion.form>
           )}
@@ -270,7 +252,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <span className={styles.phoneLabel}>Sau sună direct:</span>
+          <span className={styles.phoneLabel}>Telefoanele noastre:</span>
           <div className={styles.phoneNumbers}>
             {contacts.map((c) => (
               <div key={c.name} className={styles.phoneEntry}>

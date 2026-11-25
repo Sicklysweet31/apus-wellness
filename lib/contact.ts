@@ -7,3 +7,7 @@ export const CALL_HREF = `tel:+${MARK}`;
 export const WHATSAPP_HREF =
   `https://wa.me/${MARK}?text=` +
   encodeURIComponent("Am văzut site-ul. Este liber jacuzziul pe data de ");
+
+// A WhatsApp link with its own first line (each price card says which package).
+export const whatsappWith = (text: string) =>
+  `https://wa.me/${MARK}?text=` + encodeURIComponent(text);

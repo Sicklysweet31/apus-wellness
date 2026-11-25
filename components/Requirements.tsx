@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import styles from "./Requirements.module.css";
 
 const requirements = [
-  "Cale de acces plană de minim 2,40 metri lățime.",
-  "Sursă de apă și priză standard.",
-  "Dacă locația este la peste 30 km de Huedin, se adaugă o taxă de transport.",
+  "Acces plan, lat de cel puțin 2,40 m, până la locul jacuzzi-ului.",
+  "Un robinet: îl umplem cu apa voastră, cam 1.800 de litri.",
+  "O priză obișnuită de 220 V, pentru pompă, filtrare și lumini.",
 ];
 
 export default function Requirements() {
@@ -30,7 +30,7 @@ export default function Requirements() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          Cerințe Minime
+          De ce aveți nevoie
         </motion.h2>
 
         <ol className={styles.list}>
@@ -56,7 +56,7 @@ export default function Requirements() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.55 }}
         >
-          Se percepe o garanție returnabilă pentru echipament.
+          Peste 30 km de Huedin se adaugă o taxă de transport.
         </motion.p>
       </div>
     </section>

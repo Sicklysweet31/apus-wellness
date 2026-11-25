@@ -6,6 +6,7 @@ import Gallery from "@/components/Gallery";
 import ReviewsSection from "@/components/ReviewsSection";
 import Pricing from "@/components/Pricing";
 import Requirements from "@/components/Requirements";
+import Questions from "@/components/Questions";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CallBar from "@/components/CallBar";
@@ -22,6 +23,7 @@ export default function Home() {
         <ReviewsSection />
         <Pricing />
         <Requirements />
+        <Questions />
         <Contact />
       </main>
       <Footer />

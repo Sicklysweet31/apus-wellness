@@ -256,7 +256,33 @@
   color: var(--color-warm-stone);
 }
 
+/* Call and WhatsApp first: calls book almost every time */
+.direct {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: var(--space-large);
+}
+
+.direct a {
+  justify-content: center;
+  text-align: center;
+  min-width: 220px;
+}
+
+.orForm {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.95rem;
+  color: var(--color-warm-stone);
+  text-align: center;
+  margin-bottom: var(--space-large);
+}
+
 @media (max-width: 768px) {
+  .direct { flex-direction: column; align-items: stretch; }
+  .direct a { padding: 0.95rem 1rem; }
   .section { padding: var(--space-xl) var(--space-medium); }
   .headline { font-size: 2rem; }
 }

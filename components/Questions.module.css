@@ -1,0 +1,91 @@
+/* Questions before booking: thin gold rules, one line each, the answer on a tap */
+.section {
+  padding: var(--space-big) var(--space-xl);
+  border-top: 1px solid rgba(196, 135, 58, 0.12);
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  color: var(--color-mist);
+  line-height: 1.2;
+  margin-top: 0.75rem;
+  margin-bottom: var(--space-xl);
+}
+
+.list {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(196, 135, 58, 0.25);
+}
+
+.item {
+  border-bottom: 1px solid rgba(196, 135, 58, 0.25);
+}
+
+.q {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 0.25rem;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--color-mist);
+}
+
+.q::-webkit-details-marker { display: none; }
+
+.q:focus-visible {
+  outline: 1px solid var(--color-sunset-gold);
+  outline-offset: 3px;
+}
+
+/* a thin gold plus that turns into a minus */
+.plus {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.plus::before,
+.plus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 1px;
+  background: var(--color-sunset-gold);
+  transition: transform var(--transition-base);
+}
+
+.plus::after { transform: rotate(90deg); }
+.item[open] .plus::after { transform: rotate(0deg); }
+
+.a {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(244, 237, 227, 0.75);
+  padding: 0 0.25rem 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .section { padding: var(--space-xl) var(--space-medium); }
+  .q { font-size: 1.15rem; }
+}

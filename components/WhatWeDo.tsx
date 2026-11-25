@@ -6,18 +6,18 @@ import styles from "./WhatWeDo.module.css";
 const cards = [
   {
     number: "01",
-    title: "Alegi locația",
-    body: "Fie că este curtea casei tale sau o cabană retrasă, avem nevoie doar de o sursă de apă și o priză standard de 220V pentru pompă, filtrare și lumini. De restul ne ocupăm noi.",
+    title: "Ne spuneți data și locul",
+    body: "Ne sunați sau ne scrieți pe WhatsApp. Vă spunem dacă data e liberă și ce trebuie pregătit: un robinet și o priză.",
   },
   {
     number: "02",
-    title: "Montăm și încălzim",
-    body: "Nu e un ciubăr pe lemne: e jacuzzi cu GPL, adus, umplut și încălzit de noi. Apa ajunge la 38°. Iarna, încălzirea durează 3–4 ore, așa că venim din timp.",
+    title: "Noi aducem și încălzim",
+    body: "Nu e un ciubăr pe lemne: e jacuzzi cu GPL, adus, umplut și încălzit de noi, cu apă nouă pentru fiecare grup. Iarna, încălzirea durează 3–4 ore, așa că venim din timp.",
   },
   {
     number: "03",
-    title: "Zero Efort",
-    body: "Te bucuri de hidromasaj și lumini ambientale alături de invitați. La final, noi evacuăm apa în siguranță și strângem echipamentul fără să lăsăm urme.",
+    title: "Voi vă bucurați de seară",
+    body: "Stați în apă la 38°, cu jeturile și luminile pornite. Nu puneți pe foc și nu cărați lemne. La final golim apa și strângem tot, fără să lăsăm urme.",
   },
 ];
 
