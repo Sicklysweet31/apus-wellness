@@ -4,7 +4,7 @@ import { fetchLiveReviews } from "@/lib/featurable";
 
 /*
  * Server: încearcă recenziile live (cu numele de pe Google), o dată pe zi.
- * Dacă sursa live lipsește sau dă eroare, arată recenziile copiate (fără nume).
+ * Dacă sursa live lipsește sau dă eroare, arată recenziile copiate de pe Google.
  */
 export default async function ReviewsSection() {
   const live = await fetchLiveReviews();

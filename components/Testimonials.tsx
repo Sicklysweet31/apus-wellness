@@ -8,7 +8,7 @@ import type { Review } from "./reviews";
 /*
  * RECENZII — toate recenziile cu text de pe profilul Google, nefiltrate,
  * în limba originală, pe o bandă care se derulează încet.
- * Datele vin din ReviewsSection (live cu nume, sau ./reviews.ts fără nume).
+ * Datele vin din ReviewsSection.
  */
 
 const langLabel = (lang: string) => (lang ? lang.slice(0, 2).toUpperCase() : "");
