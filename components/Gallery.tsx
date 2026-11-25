@@ -1,8 +1,8 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useCallback, useEffect, useRef, useState, type MouseEvent, type TouchEvent } from "react";
 import Image, { type StaticImageData } from "next/image";
-import { motion } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 import styles from "./Gallery.module.css";
 import drumPadureImg from "@/public/images/story-drum.webp";
 import searaAlbastraImg from "@/public/images/album/seara-albastra.webp";
@@ -18,27 +18,17 @@ import searaFelinarImg from "@/public/images/album/seara-felinar.webp";
 import varaBuleImg from "@/public/images/album/vara-bule.webp";
 
 // Real photos from the APUS album (apus-album/inbox): no faces, plates blurred.
-// The gallery tells one rental in three chapters: the road, the place, the evening.
-//
-// Desktop: each chapter is a 12-column grid of square modules (rows as tall as a
-// column is wide). `area` is the CSS grid-area (row-start / col-start / row-end /
-// col-end); the spans are picked so each crop stays close to the photo's own shape
-// (landscape 8x6 or 5x4 or 4x3, portrait 4x6 or 3x4 or 6x8). Every chapter is a full
-// rectangle: the chapter's words fill the one cell no photo takes.
-// Phone: the words, the lead photo, then the others in a swipe row.
+// One rental in three chapters. Each chapter shows one big photo (Mark's pick) and
+// the others as small thumbnails that slide in when the chapter comes into view;
+// any photo opens the full-screen viewer, which browses all of them.
 
-type Shot = {
-  img: StaticImageData;
-  alt: string;
-  shape: "portrait" | "landscape";
-  area: string;
-};
+type Shot = { img: StaticImageData; alt: string };
 
 type Chapter = {
   numeral: string;
   title: string;
   line: string;
-  textArea: string;
+  shape: "portrait" | "landscape";
   lead: Shot;
   rest: Shot[];
 };
@@ -48,31 +38,23 @@ const chapters: Chapter[] = [
     numeral: "I",
     title: "Drumul",
     line: "Livrăm oriunde te duce drumul.",
-    textArea: "7 / 1 / 11 / 5",
+    shape: "portrait",
     lead: {
-      img: drumMunteImg,
-      alt: "Land Rover-ul tractând remorca cu jacuzzi-ul pe un drum de țară, cu lan de porumb și munți în spate",
-      shape: "landscape",
-      area: "1 / 1 / 7 / 9",
+      img: artarRosuImg,
+      alt: "Remorca cu jacuzzi-ul în curtea unei vile, cu câteva frunze roșii de arțar în prim-plan",
     },
     rest: [
       {
-        img: drumPadureImg,
-        alt: "Mașină tractând remorca cu jacuzzi-ul APUS peste un pod, pe un drum forestier din Munții Apuseni",
-        shape: "portrait",
-        area: "1 / 9 / 7 / 13",
+        img: drumMunteImg,
+        alt: "Land Rover-ul tractând remorca cu jacuzzi-ul pe un drum de țară, cu lan de porumb și munți în spate",
       },
       {
         img: sosireCabanaImg,
         alt: "Land Rover-ul și remorca cu jacuzzi-ul, ajunse pe gazonul din fața cabanei",
-        shape: "landscape",
-        area: "7 / 5 / 11 / 10",
       },
       {
-        img: artarRosuImg,
-        alt: "Remorca cu jacuzzi-ul în curtea unei vile, cu câteva frunze roșii de arțar în prim-plan",
-        shape: "portrait",
-        area: "7 / 10 / 11 / 13",
+        img: drumPadureImg,
+        alt: "Mașină tractând remorca cu jacuzzi-ul APUS peste un pod, pe un drum forestier din Munții Apuseni",
       },
     ],
   },
@@ -80,31 +62,23 @@ const chapters: Chapter[] = [
     numeral: "II",
     title: "Locul",
     line: "Apa la 38°, fără lemne și fără foc.",
-    textArea: "7 / 9 / 10 / 13",
+    shape: "landscape",
     lead: {
       img: cabanaToamnaImg,
       alt: "Jacuzzi deschis cu jeturile pornite în fața unei cabane, între mesteceni aurii, toamna",
-      shape: "landscape",
-      area: "1 / 5 / 7 / 13",
     },
     rest: [
       {
         img: varaCampImg,
         alt: "Jacuzzi cu apa albastră și jeturile pornite, vara, cu un gard de tuia și dealuri întinse în spate",
-        shape: "portrait",
-        area: "1 / 1 / 7 / 5",
       },
       {
         img: buleUmbrelaImg,
         alt: "Apa cu bule în jacuzzi, sub umbrelă, cu pridvorul cabanei și copaci aurii în spate",
-        shape: "landscape",
-        area: "7 / 1 / 10 / 5",
       },
       {
         img: varaBuleImg,
         alt: "Apa cu bule în jacuzzi, vara, cu tuia și câmpul întins în spate",
-        shape: "landscape",
-        area: "7 / 5 / 10 / 9",
       },
     ],
   },
@@ -112,104 +86,248 @@ const chapters: Chapter[] = [
     numeral: "III",
     title: "Seara",
     line: "Restul serii e al tău.",
-    textArea: "5 / 10 / 9 / 13",
+    shape: "portrait",
     lead: {
       img: searaAlbastraImg,
       alt: "Jacuzzi cu apa albastră și abur la ora albastră, în curtea unei pensiuni, cu turla bisericii din sat luminată în spate",
-      shape: "portrait",
-      area: "1 / 1 / 9 / 7",
     },
     rest: [
       {
         img: apusPergolaImg,
         alt: "Jacuzzi cu apa limpede sub o pergolă de lemn, la apus",
-        shape: "portrait",
-        area: "1 / 7 / 5 / 10",
       },
       {
         img: searaFelinarImg,
         alt: "Jacuzzi luminat albastru la căderea serii, cu un copac desfrunzit și un felinar de stradă în sat",
-        shape: "portrait",
-        area: "1 / 10 / 5 / 13",
       },
       {
         img: searaBraziImg,
         alt: "Jacuzzi cu apa portocalie noaptea, sub brazi înalți",
-        shape: "portrait",
-        area: "5 / 7 / 9 / 10",
       },
     ],
   },
 ];
 
-const place = (area: string) => ({ "--area": area }) as CSSProperties;
+// The viewer's list: chapter by chapter, the big photo first.
+const all = chapters.flatMap((c) => [c.lead, ...c.rest].map((shot) => ({ ...shot, chapter: c.title })));
+const firstOf = chapters.map((_, i) =>
+  chapters.slice(0, i).reduce((n, c) => n + 1 + c.rest.length, 0),
+);
 
-function Photo({ shot, lead }: { shot: Shot; lead?: boolean }) {
+const thumbsIn = {
+  hidden: {},
+  shown: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
+};
+
+const thumbIn = {
+  hidden: { opacity: 0, y: 18 },
+  shown: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+function Arrow({ flip }: { flip?: boolean }) {
   return (
-    <figure
-      className={`${styles.shot} ${lead ? styles.lead : ""} ${
-        shot.shape === "portrait" ? styles.portrait : styles.landscape
-      }`}
-      style={place(shot.area)}
-    >
-      <Image
-        src={shot.img}
-        alt={shot.alt}
-        fill
-        placeholder="blur"
-        sizes={lead ? "(max-width: 768px) 100vw, 720px" : "(max-width: 768px) 80vw, 400px"}
-        className={styles.img}
-      />
-    </figure>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={flip ? styles.flipped : undefined}>
+      <path d="M15 5l-7 7 7 7" />
+    </svg>
   );
 }
 
 export default function Gallery() {
+  const [current, setCurrent] = useState<number | null>(null);
+  const viewer = useRef<HTMLDialogElement>(null);
+  const opener = useRef<HTMLElement | null>(null);
+  const touchX = useRef<number | null>(null);
+
+  const open = (index: number) => (e: MouseEvent<HTMLButtonElement>) => {
+    opener.current = e.currentTarget;
+    setCurrent(index);
+  };
+
+  const step = useCallback(
+    (by: number) => setCurrent((i) => (i === null ? i : (i + by + all.length) % all.length)),
+    [],
+  );
+
+  const close = () => viewer.current?.close();
+
+  useEffect(() => {
+    const dialog = viewer.current;
+    if (current !== null && dialog && !dialog.open) {
+      dialog.showModal();
+      document.documentElement.style.overflow = "hidden";
+    }
+  }, [current]);
+
+  const onClosed = () => {
+    document.documentElement.style.overflow = "";
+    setCurrent(null);
+    opener.current?.focus();
+  };
+
+  const onTouchStart = (e: TouchEvent) => {
+    touchX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: TouchEvent) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+  };
+
+  const shot = current === null ? null : all[current];
+
   return (
-    <section className={styles.section}>
-      <div className={styles.inner}>
-        <div className={styles.header}>
-          <motion.span
-            className="label"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-          >
-            În imagini
-          </motion.span>
-          <motion.h2
-            className={styles.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            Tu alegi locul. <em>Noi aducem restul.</em>
-          </motion.h2>
+    <MotionConfig reducedMotion="user">
+      <section className={styles.section}>
+        <div className={styles.inner}>
+          <div className={styles.header}>
+            <motion.span
+              className="label"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6 }}
+            >
+              În imagini
+            </motion.span>
+            <motion.h2
+              className={styles.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              Tu alegi locul. <em>Noi aducem restul.</em>
+            </motion.h2>
+          </div>
+
+          <div className={styles.chapters}>
+            {chapters.map((chapter, i) => (
+              <article
+                key={chapter.title}
+                className={`${styles.chapter} ${
+                  chapter.shape === "portrait" ? styles.portrait : styles.landscape
+                } ${i % 2 === 1 ? styles.flip : ""}`}
+              >
+                <header className={styles.words}>
+                  <span className={styles.numeral} aria-hidden="true">
+                    {chapter.numeral}
+                  </span>
+                  <h3 className={styles.chapterTitle}>{chapter.title}</h3>
+                  <span className={styles.rule} aria-hidden="true" />
+                  <p className={styles.line}>{chapter.line}</p>
+                </header>
+
+                <div className={styles.media}>
+                  <button
+                    type="button"
+                    className={styles.lead}
+                    onClick={open(firstOf[i])}
+                    aria-haspopup="dialog"
+                  >
+                    <Image
+                      src={chapter.lead.img}
+                      alt={chapter.lead.alt}
+                      fill
+                      placeholder="blur"
+                      sizes="(max-width: 768px) 100vw, 620px"
+                      className={styles.img}
+                    />
+                  </button>
+
+                  <motion.ul
+                    className={styles.thumbs}
+                    variants={thumbsIn}
+                    initial="hidden"
+                    whileInView="shown"
+                    viewport={{ once: true, margin: "-60px" }}
+                  >
+                    {chapter.rest.map((thumb, j) => (
+                      <motion.li key={thumb.img.src} variants={thumbIn}>
+                        <button
+                          type="button"
+                          className={styles.thumb}
+                          onClick={open(firstOf[i] + 1 + j)}
+                          aria-haspopup="dialog"
+                        >
+                          <Image
+                            src={thumb.img}
+                            alt={thumb.alt}
+                            fill
+                            placeholder="blur"
+                            sizes="(max-width: 768px) 30vw, 200px"
+                            className={styles.img}
+                          />
+                        </button>
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
 
-        <div className={styles.chapters}>
-          {chapters.map((chapter) => (
-            <article key={chapter.title} className={styles.chapter}>
-              <header className={styles.words} style={place(chapter.textArea)}>
-                <span className={styles.numeral} aria-hidden="true">
-                  {chapter.numeral}
-                </span>
-                <h3 className={styles.chapterTitle}>{chapter.title}</h3>
-                <span className={styles.rule} aria-hidden="true" />
-                <p className={styles.line}>{chapter.line}</p>
-              </header>
-              <Photo shot={chapter.lead} lead />
-              <div className={styles.rest}>
-                {chapter.rest.map((shot) => (
-                  <Photo key={shot.img.src} shot={shot} />
-                ))}
+        <dialog
+          ref={viewer}
+          className={styles.viewer}
+          aria-label="Pozele APUS, pe tot ecranul"
+          onClose={onClosed}
+          onClick={(e) => {
+            const target = e.target as HTMLElement;
+            if (target === e.currentTarget || target.dataset.backdrop) close();
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowRight") step(1);
+            if (e.key === "ArrowLeft") step(-1);
+          }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          {shot && (
+            <>
+              <button type="button" className={styles.close} onClick={close} aria-label="Închide">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
+              <div className={styles.stage} data-backdrop="true">
+                <Image
+                  key={shot.img.src}
+                  src={shot.img}
+                  alt={shot.alt}
+                  placeholder="blur"
+                  sizes="92vw"
+                  className={styles.full}
+                />
               </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+              <button
+                type="button"
+                className={`${styles.nav} ${styles.prev}`}
+                onClick={() => step(-1)}
+                aria-label="Poza anterioară"
+              >
+                <Arrow />
+              </button>
+              <button
+                type="button"
+                className={`${styles.nav} ${styles.next}`}
+                onClick={() => step(1)}
+                aria-label="Poza următoare"
+              >
+                <Arrow flip />
+              </button>
+              <p className={styles.foot}>
+                <span className={styles.where}>{shot.chapter}</span>
+                <span className={styles.count}>
+                  {(current ?? 0) + 1} din {all.length}
+                </span>
+              </p>
+            </>
+          )}
+        </dialog>
+      </section>
+    </MotionConfig>
   );
 }

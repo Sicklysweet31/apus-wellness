@@ -29,83 +29,126 @@
 }
 
 /* ============================================================
-   CHAPTERS: one rental, told as the road, the place, the evening
+   CHAPTERS: one big photo and its words, side by side, in a zigzag
    ============================================================ */
 .chapters {
-  container-type: inline-size;
   display: flex;
   flex-direction: column;
-  gap: var(--space-big);
+  gap: var(--space-huge);
 }
 
 .chapter {
-  --gap: 2rem;
-  --frame-offset: 8px;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  /* square modules: each row as tall as a column is wide */
-  grid-auto-rows: calc((100cqi - 11 * var(--gap)) / 12);
-  gap: var(--gap);
+  column-gap: 2rem;
+  align-items: center;
 }
 
-/* On desktop the swipe-row wrapper steps aside so its photos sit in the grid */
-.rest {
-  display: contents;
+.words,
+.media {
+  grid-row: 1;
 }
 
-/* ---------- the photos, each in a floating gold frame ---------- */
-.shot {
-  grid-area: var(--area);
+/* a portrait lead takes 6 of 12 columns, a landscape one 7 */
+.portrait .media { grid-column: 1 / 7; }
+.portrait .words { grid-column: 8 / 13; }
+.landscape .media { grid-column: 1 / 8; }
+.landscape .words { grid-column: 9 / 13; }
+.flip.portrait .media { grid-column: 7 / 13; }
+.flip.portrait .words { grid-column: 1 / 6; }
+.flip.landscape .media { grid-column: 6 / 13; }
+.flip.landscape .words { grid-column: 1 / 5; }
+
+/* ---------- the big photo ---------- */
+.lead {
   position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
   overflow: hidden;
-  margin: 0;
   background: var(--color-forest-deep);
-  outline: 1px solid rgba(196, 135, 58, 0.4);
-  outline-offset: var(--frame-offset);
+  cursor: zoom-in;
+  outline: 1px solid rgba(196, 135, 58, 0.2);
+  outline-offset: 10px;
   transition: outline-color var(--transition-base);
 }
 
-/* a soft vignette, so bright daylight sits calmly on the dark page */
-.shot::after {
+.portrait .lead { aspect-ratio: 4 / 5; }
+.landscape .lead { aspect-ratio: 4 / 3; }
+
+.lead::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
   pointer-events: none;
-  box-shadow: inset 0 0 90px rgba(8, 15, 11, 0.38);
-}
-
-.lead {
-  outline-color: rgba(196, 135, 58, 0.75);
+  box-shadow: inset 0 0 100px rgba(8, 15, 11, 0.3);
 }
 
 .img {
   object-fit: cover;
-  transition: transform var(--transition-slow);
+  transition: transform var(--transition-slow), opacity var(--transition-base);
 }
 
-.shot:hover {
-  outline-color: var(--color-sunset-gold);
+.lead:hover,
+.lead:focus-visible {
+  outline-color: rgba(196, 135, 58, 0.55);
 }
 
-.shot:hover .img {
-  transform: scale(1.03);
+.lead:hover .img {
+  transform: scale(1.02);
 }
 
-/* ---------- the chapter's words, in the cell no photo takes ---------- */
+/* ---------- the thumbnails under it ---------- */
+.thumbs {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--color-forest-deep);
+  cursor: zoom-in;
+  outline: 1px solid transparent;
+  outline-offset: 4px;
+  transition: outline-color var(--transition-base);
+}
+
+.thumb .img {
+  opacity: 0.82;
+}
+
+.thumb:hover .img,
+.thumb:focus-visible .img {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.thumb:hover,
+.thumb:focus-visible {
+  outline-color: rgba(196, 135, 58, 0.6);
+}
+
+/* ---------- the chapter's words ---------- */
 .words {
-  grid-area: var(--area);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: flex-start;
-  padding-bottom: var(--space-tiny);
 }
 
 .numeral {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: clamp(4rem, 9cqi, 6.5rem);
+  font-size: clamp(4rem, 8vw, 6.5rem);
   line-height: 0.85;
   color: var(--color-sunset-gold);
 }
@@ -113,7 +156,7 @@
 .chapterTitle {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(1.75rem, 3cqi, 2.25rem);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   line-height: 1.1;
   color: var(--color-mist);
   margin-top: var(--space-small);
@@ -131,33 +174,214 @@
   font-family: var(--font-serif);
   font-weight: 300;
   font-style: italic;
-  font-size: clamp(1.2rem, 2.2cqi, 1.45rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   line-height: 1.45;
   color: rgba(244, 237, 227, 0.8);
   max-width: 17ch;
 }
 
+/* ============================================================
+   THE FULL-SCREEN VIEWER
+   ============================================================ */
+.viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #0f1211; /* solid: the page must not show through */
+  color: var(--color-mist);
+  overflow: hidden;
+}
+
+.viewer[open] {
+  animation: viewerIn 0.35s ease;
+}
+
+.viewer::backdrop {
+  background: transparent;
+}
+
+.stage {
+  position: absolute;
+  inset: 4.5rem 5.5rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.full {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  animation: viewerIn 0.45s ease;
+}
+
+.close,
+.nav {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: rgba(244, 237, 227, 0.75);
+  transition: color var(--transition-base);
+}
+
+.close:hover,
+.nav:hover,
+.close:focus-visible,
+.nav:focus-visible {
+  color: var(--color-sunset-gold);
+}
+
+.close:focus-visible,
+.nav:focus-visible {
+  outline: 1px solid var(--color-sunset-gold);
+  outline-offset: 2px;
+}
+
+.close svg,
+.nav svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+}
+
+.close {
+  top: 1rem;
+  right: 1.25rem;
+}
+
+.nav {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev { left: 1.25rem; }
+.next { right: 1.25rem; }
+
+.flipped {
+  transform: scaleX(-1);
+}
+
+.foot {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-medium);
+  white-space: nowrap;
+}
+
+.where {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.35rem;
+}
+
+.count {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: var(--text-small);
+  letter-spacing: 0.08em;
+  color: var(--color-warm-stone);
+}
+
+@keyframes viewerIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .img,
-  .shot {
+  .lead,
+  .thumb {
     transition: none;
   }
 
-  .shot:hover .img {
+  .lead:hover .img,
+  .thumb:hover .img,
+  .thumb:focus-visible .img {
     transform: none;
   }
-}
 
-@media (max-width: 1024px) {
-  .chapter {
-    --gap: 1.25rem;
-    --frame-offset: 6px;
+  .viewer[open],
+  .full {
+    animation: none;
   }
 }
 
 /* ============================================================
-   PHONE: words, the lead photo, then a swipe row
+   TABLET AND PHONE
    ============================================================ */
+@media (max-width: 900px) {
+  .chapters {
+    gap: var(--space-big);
+  }
+
+  .chapter {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-medium);
+  }
+
+  .words {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: var(--space-small);
+  }
+
+  .numeral {
+    font-size: 3rem;
+  }
+
+  .chapterTitle {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  .rule {
+    display: none;
+  }
+
+  .line {
+    flex-basis: 100%;
+    max-width: none;
+    font-size: 1.15rem;
+  }
+
+  .media {
+    max-width: 560px;
+  }
+
+  .lead {
+    outline-offset: 6px;
+  }
+
+  .thumbs {
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .thumb .img {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding: var(--space-xl) var(--space-medium);
@@ -171,82 +395,21 @@
     gap: var(--space-xl);
   }
 
-  .chapter {
-    --frame-offset: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-medium);
+  /* the viewer: the photo uses the full width; swipe, or the arrows at the bottom */
+  .stage {
+    inset: 4rem 0.75rem 5.5rem;
   }
 
-  .shot,
-  .words {
-    grid-area: auto;
+  .nav {
+    top: auto;
+    bottom: 1rem;
+    transform: none;
   }
 
-  .words {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: baseline;
-    column-gap: var(--space-small);
-    padding: 0;
-  }
+  .prev { left: 0.75rem; }
+  .next { right: 0.75rem; }
 
-  .numeral {
-    font-size: 2.5rem;
-  }
-
-  .chapterTitle {
-    font-size: 1.75rem;
-    margin-top: 0;
-  }
-
-  .rule {
-    display: none;
-  }
-
-  .line {
-    flex-basis: 100%;
-    max-width: none;
-    font-size: 1.1rem;
-  }
-
-  .lead.landscape {
-    aspect-ratio: 4 / 3;
-  }
-
-  .lead.portrait {
-    aspect-ratio: 4 / 5;
-  }
-
-  .rest {
-    display: flex;
-    gap: var(--space-medium);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    /* room for the frames, which sit outside each photo */
-    padding: var(--frame-offset) var(--space-medium) calc(var(--frame-offset) + 2px) var(--frame-offset);
-    margin: 0 calc(-1 * var(--space-medium)) 0 calc(-1 * var(--frame-offset));
-    scroll-padding-left: var(--frame-offset);
-    scrollbar-width: none;
-  }
-
-  .rest::-webkit-scrollbar {
-    display: none;
-  }
-
-  .rest .shot {
-    flex: 0 0 auto;
-    height: 260px;
-    scroll-snap-align: start;
-  }
-
-  .rest .portrait {
-    aspect-ratio: 3 / 4;
-  }
-
-  .rest .landscape {
-    aspect-ratio: 4 / 3;
-    max-width: 80vw;
+  .foot {
+    bottom: 1.75rem;
   }
 }
