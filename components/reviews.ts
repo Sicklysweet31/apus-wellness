@@ -13,8 +13,12 @@
 
 export type Review = {
   stars: 1 | 2 | 3 | 4 | 5;
-  lang: "ro" | "hu" | "en";
+  /** codul limbii originale: "ro", "hu", "en"… */
+  lang: string;
   text: string;
+  /** doar din sursa live (Featurable / Google); niciodată scris în acest fișier */
+  name?: string;
+  avatar?: string;
 };
 
 export const GOOGLE_TOTAL = 15;

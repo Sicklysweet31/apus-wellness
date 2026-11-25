@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import WhatWeDo from "@/components/WhatWeDo";
 import Gallery from "@/components/Gallery";
 import WhatsIncluded from "@/components/WhatsIncluded";
-import Testimonials from "@/components/Testimonials";
+import ReviewsSection from "@/components/ReviewsSection";
 import Pricing from "@/components/Pricing";
 import Requirements from "@/components/Requirements";
 import Contact from "@/components/Contact";
@@ -20,7 +20,7 @@ export default function Home() {
         <WhatWeDo />
         <Gallery />
         <WhatsIncluded />
-        <Testimonials />
+        <ReviewsSection />
         <Pricing />
         <Requirements />
         <Contact />

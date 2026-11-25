@@ -3,25 +3,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "./Testimonials.module.css";
-import {
-  reviews,
-  GOOGLE_TOTAL,
-  GOOGLE_AVERAGE,
-  GOOGLE_PROFILE_URL,
-  type Review,
-} from "./reviews";
+import type { Review } from "./reviews";
 
 /*
  * RECENZII — toate recenziile cu text de pe profilul Google, nefiltrate,
  * în limba originală, pe o bandă care se derulează încet.
- * Datele: ./reviews.ts (fără nume de clienți).
+ * Datele vin din ReviewsSection (live cu nume, sau ./reviews.ts fără nume).
  */
 
-const LANG_LABEL: Record<Review["lang"], string> = {
-  ro: "RO",
-  hu: "HU",
-  en: "EN",
-};
+const langLabel = (lang: string) => (lang ? lang.slice(0, 2).toUpperCase() : "");
 
 const LONG_TEXT = 260;
 
@@ -79,13 +69,42 @@ function ReviewCard({
         </button>
       )}
       <figcaption className={styles.source}>
-        Recenzie Google · {LANG_LABEL[review.lang]}
+        {review.avatar && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={review.avatar}
+            alt=""
+            width={28}
+            height={28}
+            className={styles.avatar}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+          />
+        )}
+        <span className={styles.sourceText}>
+          {review.name && <span className={styles.name}>{review.name}</span>}
+          <span className={styles.sourceMeta}>
+            {[review.name ? "Google" : "Recenzie Google", langLabel(review.lang)]
+              .filter(Boolean)
+              .join(" · ")}
+          </span>
+        </span>
       </figcaption>
     </figure>
   );
 }
 
-export default function Testimonials() {
+export default function Testimonials({
+  reviews,
+  total,
+  average: averageRating,
+  profileUrl,
+}: {
+  reviews: Review[];
+  total: number;
+  average: number;
+  profileUrl: string;
+}) {
   const [openCount, setOpenCount] = useState(0);
   const [touchPaused, setTouchPaused] = useState(false);
 
@@ -93,7 +112,7 @@ export default function Testimonials() {
 
   const paused = openCount > 0 || touchPaused;
   const onToggle = (open: boolean) => setOpenCount((c) => Math.max(0, c + (open ? 1 : -1)));
-  const average = GOOGLE_AVERAGE.toFixed(1).replace(".", ",");
+  const average = averageRating.toFixed(1).replace(".", ",");
 
   return (
     <section id="testimoniale" className={styles.section}>
@@ -120,7 +139,7 @@ export default function Testimonials() {
         </div>
 
         <motion.a
-          href={GOOGLE_PROFILE_URL}
+          href={profileUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.rating}
@@ -130,8 +149,8 @@ export default function Testimonials() {
           transition={{ duration: 0.7, delay: 0.2 }}
         >
           <span className={styles.ratingNumber}>{average}</span>
-          <Stars count={Math.round(GOOGLE_AVERAGE)} size={18} />
-          <span className={styles.ratingCount}>{GOOGLE_TOTAL} recenzii pe Google</span>
+          <Stars count={Math.round(averageRating)} size={18} />
+          <span className={styles.ratingCount}>{total} recenzii pe Google</span>
         </motion.a>
       </div>
 
@@ -156,7 +175,7 @@ export default function Testimonials() {
       <div className={styles.inner}>
         <p className={styles.note}>
           Toate recenziile cu text de pe profilul nostru Google, nefiltrate, în limba în care au fost scrise.{" "}
-          <a href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer" className={styles.noteLink}>
+          <a href={profileUrl} target="_blank" rel="noopener noreferrer" className={styles.noteLink}>
             Vezi-le pe Google
           </a>
         </p>
