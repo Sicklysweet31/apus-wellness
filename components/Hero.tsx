@@ -1,15 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Hero.module.css";
 import heroImg from "@/public/images/hero.jpg";
 import { CALL_HREF, WHATSAPP_HREF } from "@/lib/contact";
-import { GOOGLE_TOTAL, GOOGLE_AVERAGE, GOOGLE_PROFILE_URL } from "./reviews";
+import { GOOGLE_TOTAL, GOOGLE_AVERAGE, GOOGLE_PROFILE_URL, heroQuotes } from "./reviews";
 
 export default function Hero() {
   const bgRef = useRef<HTMLDivElement>(null);
+  const [quote, setQuote] = useState(0);
+  const still = useReducedMotion();
+
+  // One review at a time, a new one every 7 seconds (none when motion is reduced)
+  useEffect(() => {
+    if (still || heroQuotes.length < 2) return;
+    const t = window.setInterval(() => setQuote((q) => (q + 1) % heroQuotes.length), 7000);
+    return () => window.clearInterval(t);
+  }, [still]);
 
   useEffect(() => {
     const bg = bgRef.current;
@@ -87,21 +96,45 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Proof and price next to the buttons, where the decision happens */}
-        <div className={styles.facts}>
-          <a
-            href={GOOGLE_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.proof}
-          >
-            {GOOGLE_AVERAGE.toFixed(1).replace(".", ",")}{" "}
-            <span className={styles.star} aria-hidden="true">★</span> · {GOOGLE_TOTAL} recenzii pe Google
-          </a>
-          <p className={styles.price}>
-            Weekendul: 1.290 lei, sub 145 lei de persoană dacă sunteți 9
-          </p>
-        </div>
+        {/* The price next to the buttons, where the decision happens */}
+        <p className={styles.price}>
+          Weekendul: 1.290 lei
+          <br />
+          sub 145 lei de persoană dacă sunteți 9
+        </p>
+
+        {/* A real review on the first screen; a tap goes to all of them */}
+        {heroQuotes.length > 0 && (
+          <div className={styles.quote}>
+            <a
+              href={GOOGLE_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.proof}
+            >
+              {GOOGLE_AVERAGE.toFixed(1).replace(".", ",")}{" "}
+              <span className={styles.star} aria-hidden="true">★★★★★</span> · {GOOGLE_TOTAL} recenzii pe Google
+            </a>
+            <a href="#testimoniale" className={styles.quoteLink} aria-label="Citește toate recenziile">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={quote}
+                className={styles.quoteBody}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <span className={styles.quoteText}>
+                  {/* non-breaking hyphen on screen only: "m-am" stays on one line */}
+                  „{heroQuotes[quote].text.replace(/-/g, "‑")}”
+                </span>
+                <span className={styles.quoteName}>{heroQuotes[quote].name} · Google</span>
+              </motion.span>
+            </AnimatePresence>
+            </a>
+          </div>
+        )}
       </div>
 
       <motion.div

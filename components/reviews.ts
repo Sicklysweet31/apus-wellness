@@ -94,3 +94,19 @@ export const reviews: Review[] = [
     text: "Datorită celor de la Apus Welness, am avut o zi onomastică superbă. Mi-au adus jacuzzi-ul chiar acasă și m-am relaxat alături de cei dragi.",
   },
 ];
+
+/*
+ * Citatele de pe primul ecran: câte o propoziție întreagă, cuvânt cu cuvânt, dintr-o
+ * recenzie de mai sus. Numele vine din recenzia în care se găsește propoziția;
+ * dacă propoziția nu mai există exact așa, citatul nu apare.
+ */
+const HERO_SENTENCES = [
+  "Mi-au adus jacuzzi-ul chiar acasă și m-am relaxat alături de cei dragi.",
+  "Totul a fost exact cum ne-am dorit, curat, bine întreținut și foarte plăcut.",
+  "Totul a fost foarte bine organizat și ne-am simțit super.",
+];
+
+export const heroQuotes: { text: string; name: string }[] = HERO_SENTENCES.flatMap((text) => {
+  const review = reviews.find((r) => r.stars === 5 && r.text.includes(text));
+  return review ? [{ text, name: review.name ?? "Client APUS" }] : [];
+});
