@@ -22,7 +22,7 @@ declare global {
 // Clarity's own queue: calls made before its script loads are kept and sent later.
 function clarity(...args: unknown[]) {
   if (typeof window === "undefined") return;
-  if (!window.clarity) {
+  if (typeof window.clarity !== "function") {
     const queue: ClarityFn = (...queued: unknown[]) => {
       (queue.q = queue.q || []).push(queued);
     };

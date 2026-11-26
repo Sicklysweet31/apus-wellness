@@ -71,7 +71,8 @@ export default function Measure() {
   return (
     <>
       {live && (
-        <Script id="clarity" strategy="afterInteractive">
+        // not id="clarity": an element with that id becomes window.clarity and stops the tag
+        <Script id="clarity-init" strategy="afterInteractive">
           {clarityTag}
         </Script>
       )}
