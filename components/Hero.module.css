@@ -214,7 +214,7 @@
   .sub { margin-bottom: 1.5rem; }
   .quote { margin-top: 1.4rem; padding-top: 1rem; max-width: 320px; gap: 0.5rem; }
   .quoteText { font-size: 1.02rem; }
-  .quoteBody { min-height: 4.2rem; }
+  .quoteBody { min-height: 5.6rem; } /* room for a 3-line quote, so nothing jumps */
   .sub { font-size: 0.9rem; max-width: 340px; }
   .actions { flex-direction: column; width: 100%; max-width: 320px; }
   .actions a { padding: 0.875rem 1rem; }

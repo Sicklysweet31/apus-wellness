@@ -96,17 +96,50 @@ export const reviews: Review[] = [
 ];
 
 /*
- * Citatele de pe primul ecran: câte o propoziție întreagă, cuvânt cu cuvânt, dintr-o
- * recenzie de mai sus. Numele vine din recenzia în care se găsește propoziția;
- * dacă propoziția nu mai există exact așa, citatul nu apare.
+ * Citatele de pe primul ecran: din FIECARE recenzie de 5 stele cu text, câte o
+ * propoziție întreagă, cuvânt cu cuvânt, în limba originală, cu numele de pe Google.
+ *  - Dacă recenzia conține una din propozițiile alese mai jos, apare aceea.
+ *  - Altfel se ia singură prima propoziție care încape pe ecran (25–110 caractere),
+ *    așa că o recenzie nouă intră în rotație fără altă muncă.
+ * Ordinea: întâi cele în română, apoi maghiară, apoi engleză (vizitatorul vede primele
+ * 2–3 citate; restul se rotesc dacă rămâne).
  */
-const HERO_SENTENCES = [
+const PREFERRED_SENTENCES = [
   "Mi-au adus jacuzzi-ul chiar acasă și m-am relaxat alături de cei dragi.",
   "Totul a fost exact cum ne-am dorit, curat, bine întreținut și foarte plăcut.",
   "Totul a fost foarte bine organizat și ne-am simțit super.",
+  "Personalul de nota 10 si foarte intelegatori cu nevoile noastre!!",
+  "Ajànlom mindenkinek, aki nem wellnessbe akar menni, hanem inkább a wellnesst akarja haza vinni",
+  "Bátran ajánlom mindenkinek, aki szeretne egy kis luxust és feltöltődést vinni a hétköznapokba!",
+  "We spent a splendid evening with great service.",
+  "The Jacuzzi was fantastic, clean and ready to enjoy.",
 ];
 
-export const heroQuotes: { text: string; name: string }[] = HERO_SENTENCES.flatMap((text) => {
-  const review = reviews.find((r) => r.stars === 5 && r.text.includes(text));
-  return review ? [{ text, name: review.name ?? "Client APUS" }] : [];
-});
+const LANG_ORDER = ["ro", "hu", "en"];
+
+function heroSentence(text: string): string | null {
+  const preferred = PREFERRED_SENTENCES.find((s) => text.includes(s));
+  if (preferred) return preferred;
+  const sentences = text.split(/(?<=[.!?])\s+/).map((s) => s.trim());
+  return sentences.find((s) => s.length >= 25 && s.length <= 110) ?? null;
+}
+
+const rank = (lang: string) => {
+  const i = LANG_ORDER.indexOf(lang);
+  return i === -1 ? LANG_ORDER.length : i;
+};
+
+export const heroQuotes: { text: string; name: string }[] = reviews
+  .filter((r) => r.stars === 5)
+  .flatMap((r) => {
+    const text = heroSentence(r.text);
+    return text ? [{ text, name: r.name ?? "Client APUS", lang: r.lang }] : [];
+  })
+  // by language, then the chosen sentences in the order above, then the rest as on Google
+  .sort((a, b) => rank(a.lang) - rank(b.lang) || pick(a.text) - pick(b.text))
+  .map(({ text, name }) => ({ text, name }));
+
+function pick(text: string) {
+  const i = PREFERRED_SENTENCES.indexOf(text);
+  return i === -1 ? PREFERRED_SENTENCES.length : i;
+}
